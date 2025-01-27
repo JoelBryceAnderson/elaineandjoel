@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Gift, X, Building2, Letter } from 'lucide-react';
+import { Gift, X, Building2, Mail } from 'lucide-react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -158,6 +158,15 @@ const HomePage: React.FC = () => (
                     Hotels & Accommodations
                   </Link>
                 </p>
+                <p>
+                  <Link 
+                    to="/rsvp" 
+                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    RSVP
+                  </Link>
+                </p>
               </li>
             </ul>
           </nav>
@@ -188,6 +197,26 @@ const HotelsPage: React.FC = () => {
   );
 };
 
+const RSVPPage: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-amber-50 p-8">
+      <div className="max-w-2xl mx-auto px-8 py-24 relative">
+        <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
+        
+        <div className="relative z-10 space-y-8">
+          <h1 className="text-3xl font-serif text-center text-gray-800 mb-12">RSVP</h1>
+          
+          <div className="prose mx-auto text-gray-700">
+            <p className="text-center mb-8">
+            We look forward to having you celebrate with us! Please check back soon for an online RSVP form.
+            </p>            
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+};
+
 const WeddingWebsite: React.FC = () => {
   return (
     <Router>
@@ -195,7 +224,8 @@ const WeddingWebsite: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gifts" element={<GiftsPage />} />
-                    <Route path="/hotels" element={<HotelsPage />} />
+          <Route path="/hotels" element={<HotelsPage />} />
+          <Route path="/rsvp" element={<RSVPPage />} />
         </Routes>
       </div>
     </Router>
