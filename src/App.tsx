@@ -129,12 +129,14 @@ const HomePage: React.FC = () => (
           <div className="text-[#1B365D] space-y-2">
            <a
              href="https://www.aurorabk.com" 
-             target = "_blank">
+             target = "_blank"
+             rel="noopener noreferrer">
               <p className="font-semibold">Aurora Restaurant</p>
            </a>
           <a
              href="https://maps.app.goo.gl/XgpetCEfV694dqG78" 
-             target = "_blank">
+             target = "_blank"
+             rel="noopener noreferrer">
             <p>70 Grand Street</p>
             <p>Brooklyn, NY</p>
            </a>
