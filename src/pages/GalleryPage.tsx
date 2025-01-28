@@ -17,24 +17,30 @@ interface ImageModalProps {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
+    src: "https://lh3.googleusercontent.com/d/13KQRH2bEsC518nXMyrNjv6wWjhHPP8Vn",
+    alt: "2024",
+    title: "We bought a home!"
+  },
+  {
+    id: 2,
     src: "https://lh3.googleusercontent.com/d/1Uhk2bcO95euo0yiUu8fPirwL8LUWGJK7",
     alt: "2023",
     title: "Engaged!"
   },
   {
-    id: 2,
+    id: 3,
     src: "https://lh3.googleusercontent.com/d/1-703zXx_52CdvZnePY0zKaR-n3EA_RUM",
     alt: "2019",
     title: "NYC Together!"
   },
   {
-    id: 3,
+    id: 4,
     src: "https://lh3.googleusercontent.com/d/13cJNr_30VWBivaGsQ7t-3FySXRi6UCvr",
     alt: "2017",
     title: "Joel moves to NYC"
   },
   {
-    id: 4,
+    id: 5,
     src: "https://lh3.googleusercontent.com/d/1gqHHdYJ_K_PjRP7TamE9Y18KAyEK-AKv",
     alt: "2015",
     title: "Sorority date night"
