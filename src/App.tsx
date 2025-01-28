@@ -5,6 +5,9 @@ import HomePage from './pages/HomePage';
 import GiftsPage from './pages/GiftsPage';
 import HotelsPage from './pages/HotelsPage';
 import RSVPPage from './pages/RSVPPage';
+import NeighborhoodPage from './pages/NeighborhoodPage';
+import GalleryPage from './pages/GalleryPage';
+import FaqsPage from './pages/FaqsPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,18 @@ const router = createBrowserRouter([
       {
         path: "/rsvp",
         element: <RSVPPage />
+      },
+      {
+        path: "/williamsburg",
+        element: <NeighborhoodPage />
+      },
+      {
+        path: "/cute_pics",
+        element: <GalleryPage />
+      },
+      {
+        path: "/im_confused",
+        element: <FaqsPage />
       }
     ]
   }

@@ -5,7 +5,7 @@ const GiftsPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
   return (
-    <div className="min-h-screen bg-amber-50 p-8">
+    <div className="min-h-screen bg-[#112543] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         

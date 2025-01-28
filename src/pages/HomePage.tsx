@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Gift, Building2 } from 'lucide-react';
+import { Gift, Building2, HotelIcon, Camera, MailQuestion } from 'lucide-react';
 
 const HomePage: React.FC = () => (
-  <div className="min-h-screen bg-amber-50 p-8">
+  <div className="min-h-screen bg-[#112543] p-8">
     <div className="max-w-2xl mx-auto px-8 py-24 relative">
       <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
       
@@ -74,8 +74,35 @@ const HomePage: React.FC = () => (
                     to="/hotels" 
                     className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
                   >
-                    <Building2 className="w-4 h-4 mr-2" />
+                    <HotelIcon className="w-4 h-4 mr-2" />
                     Hotels & Accommodations
+                  </Link>
+                </p>
+                <p>
+                  <Link 
+                    to="/williamsburg" 
+                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Building2 className="w-4 h-4 mr-2" />
+                    The Neighborhood
+                  </Link>
+                </p>
+                <p>
+                  <Link 
+                    to="/im_confused" 
+                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <MailQuestion className="w-4 h-4 mr-2" />
+                    FAQs
+                  </Link>
+                </p>
+                <p>
+                  <Link 
+                    to="/cute_pics" 
+                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <Camera className="w-4 h-4 mr-2" />
+                    Gallery
                   </Link>
                 </p>
               </li>
