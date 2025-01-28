@@ -8,6 +8,7 @@ import RSVPPage from './pages/RSVPPage';
 import NeighborhoodPage from './pages/NeighborhoodPage';
 import GalleryPage from './pages/GalleryPage';
 import FaqsPage from './pages/FaqsPage';
+import EventsPage from './pages/EventsPage';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/rsvp",
         element: <RSVPPage />
+      },
+      {
+        path: "/events",
+        element: <EventsPage />
       },
       {
         path: "/williamsburg",

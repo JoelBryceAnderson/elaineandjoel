@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Gift, Building2, HotelIcon, Camera, MailQuestion } from 'lucide-react';
+import { Gift, Building2, HotelIcon, Camera, MailQuestion, PartyPopper } from 'lucide-react';
 
 const HomePage: React.FC = () => (
   <div className="min-h-screen bg-[#112543] p-8">
@@ -76,6 +76,15 @@ const HomePage: React.FC = () => (
                   >
                     <HotelIcon className="w-4 h-4 mr-2" />
                     Hotels & Accommodations
+                  </Link>
+                </p>
+                <p>
+                  <Link 
+                    to="/events" 
+                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    <PartyPopper className="w-4 h-4 mr-2" />
+                    Wedding Events
                   </Link>
                 </p>
                 <p>
