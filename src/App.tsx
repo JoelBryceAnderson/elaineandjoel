@@ -1,5 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, ScrollRestoration, Outlet, Link} from 'react-router-dom';
 import { Gift, X, Building2, Mail } from 'lucide-react';
 
 interface ModalProps {
@@ -141,6 +141,16 @@ const HomePage: React.FC = () => (
             <p>Brooklyn, NY</p>
            </a>
           </div>
+          <div className="space-y-2 pr-16 pl-16 pt-8">
+            <Link
+            to="/rsvp">
+              <button 
+                className="block w-full bg-[#C5A572] text-white text-center py-4 rounded-lg hover:text-[#1B365D] hover:bg-[#FDF9F3] transition-colors"
+              >
+                RSVP
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Navigation section */}
@@ -165,15 +175,6 @@ const HomePage: React.FC = () => (
                   >
                     <Building2 className="w-4 h-4 mr-2" />
                     Hotels & Accommodations
-                  </Link>
-                </p>
-                <p>
-                  <Link 
-                    to="/rsvp" 
-                    className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    RSVP
                   </Link>
                 </p>
               </li>
@@ -226,19 +227,42 @@ const RSVPPage: React.FC = () => {
   );
 };
 
-const WeddingWebsite: React.FC = () => {
+const Layout: React.FC = () => {
   return (
-    <Router>
-      <div className="relative">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/gifts" element={<GiftsPage />} />
-          <Route path="/hotels" element={<HotelsPage />} />
-          <Route path="/rsvp" element={<RSVPPage />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="relative">
+      <ScrollRestoration />
+      <Outlet />
+    </div>
   );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />
+      },
+      {
+        path: "/gifts",
+        element: <GiftsPage />
+      },
+      {
+        path: "/hotels",
+        element: <HotelsPage />
+      },
+      {
+        path: "/rsvp",
+        element: <RSVPPage />
+      }
+    ]
+  }
+]);
+
+const WeddingWebsite: React.FC = () => {
+  return <RouterProvider router={router} />;
 };
 
 export default WeddingWebsite;
