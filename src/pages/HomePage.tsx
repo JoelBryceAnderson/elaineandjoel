@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
                 </Link>
                 
                 <Link 
-                  to="/im_confused" 
+                  to="/cute_pics" 
                   className="group bg-white hover:bg-[#FDF9F3] transition-all py-8"
                 >
                   <p className="font-serif italic text-center text-[#1B365D] group-hover:text-[#C5A572] transition-colors">
