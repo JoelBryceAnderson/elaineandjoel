@@ -23,12 +23,18 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 2,
+    src: "https://lh3.googleusercontent.com/d/1-703zXx_52CdvZnePY0zKaR-n3EA_RUM",
+    alt: "2019",
+    title: "NYC Together!"
+  },
+  {
+    id: 3,
     src: "https://lh3.googleusercontent.com/d/13cJNr_30VWBivaGsQ7t-3FySXRi6UCvr",
     alt: "2017",
     title: "Joel moves to NYC"
   },
   {
-    id: 3,
+    id: 4,
     src: "https://lh3.googleusercontent.com/d/1gqHHdYJ_K_PjRP7TamE9Y18KAyEK-AKv",
     alt: "2015",
     title: "Sorority date night"
