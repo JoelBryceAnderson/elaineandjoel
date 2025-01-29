@@ -129,7 +129,6 @@ const LocationCard: React.FC<LocationCardProps> = ({
 
 const NeighborhoodPage: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
-  const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState<string | null>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const googleMapRef = useRef<google.maps.Map | null>(null);
@@ -224,8 +223,6 @@ const NeighborhoodPage: React.FC = () => {
 
           return marker;
         });
-
-        setMapLoaded(true);
       } catch (error) {
         console.error('Error loading map:', error);
         setMapError('Failed to load map');
@@ -239,24 +236,6 @@ const NeighborhoodPage: React.FC = () => {
     if (selectedLocation && googleMapRef.current) {
       googleMapRef.current.panTo(selectedLocation.coordinates);
       googleMapRef.current.setZoom(17);
-
-      // Update markers styles
-      markersRef.current.forEach(marker => {
-        if (marker.content) {
-          const pin = marker.content.querySelector('.gmp-pin') as HTMLElement;
-          const label = marker.content.querySelector('.marker-label') as HTMLElement;
-          
-          // if (marker.title === selectedLocation.name) {
-          //   pin.style.setProperty('--gmpx-color__surface', '#1B365D');
-          //   pin.style.setProperty('--gmpx-color__on-surface', '#C5A572');
-          //   label.style.transform = 'scale(1.05)';
-          // } else {
-          //   pin.style.setProperty('--gmpx-color__surface', '#C5A572');
-          //   pin.style.setProperty('--gmpx-color__on-surface', '#1B365D');
-          //   label.style.transform = 'scale(1)';
-          // }
-        }
-      });
     }
   }, [selectedLocation]);
 
