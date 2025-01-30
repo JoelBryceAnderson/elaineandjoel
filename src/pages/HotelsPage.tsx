@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Plane, Hotel, Car } from 'lucide-react';
-import { loader, MAP_STYLES, mapId } from '../utils/mapUtils';
+import { loader, mapId } from '../utils/mapUtils';
 import { Airport, HOTEL, VENUE, AIRPORTS } from './hotelsTypes';
 
 const HotelMap: React.FC = () => {
@@ -28,7 +28,6 @@ const HotelMap: React.FC = () => {
           mapTypeControl: false,
           streetViewControl: false,
           fullscreenControl: false,
-          styles: MAP_STYLES
         });
 
         // Create markers for hotel and venue
@@ -120,7 +119,6 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
           fullscreenControl: false,
           clickableIcons: false,
           gestureHandling: "none",
-          styles: MAP_STYLES
         });
 
         const directionsService = new google.maps.DirectionsService();
