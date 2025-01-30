@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, LandPlot, Utensils } from 'lucide-react';
-import { Loader } from '@googlemaps/js-api-loader';
+import { loader, mapId } from '../utils/mapUtils';
 
 // Type definitions
 declare global {
@@ -76,10 +76,6 @@ const locations: LocationCategories = {
   ]
 };
 
-// Access environment variables using:
-const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
-const mapId = process.env.REACT_APP_GOOGLE_MAPS_ID || '';
-
 const WILLIAMSBURG_BOUNDS = {
   north: 40.7492, // Up to around Greenpoint/Long Island City
   south: 40.6893, // Down to Navy Yard/South Williamsburg
@@ -137,13 +133,6 @@ const NeighborhoodPage: React.FC = () => {
   useEffect(() => {
     const initMap = async () => {
       try {
-        const loader = new Loader({
-          apiKey: apiKey,
-          version: "weekly",
-          libraries: ["places", "marker"],
-          mapIds: [mapId]  // Add your Map ID here
-        });
-
         // Load the Google Maps script
         await loader.load();
 
