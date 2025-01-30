@@ -35,7 +35,7 @@ const locations: LocationCategories = {
       name: "Domino Park",
       description: "Waterfront park with stunning Manhattan views, featuring an elevated walkway, fountain plaza, and playground.",
       address: "15 River St, Brooklyn, NY 11249",
-      mapUrl: "https://maps.app.goo.gl/rHwXMUa4DRACnLsUA",
+      mapUrl: "https://maps.app.goo.gl/F9fWaYX142uTNLrs6",
       coordinates: {
         lat: 40.7147,
         lng: -73.9670
@@ -45,7 +45,7 @@ const locations: LocationCategories = {
       name: "Bushwick Inlet Park",
       description: "Waterfront green space perfect for picnics and recreational activities with skyline views.",
       address: "50 Kent Ave, Brooklyn, NY 11249",
-      mapUrl: "https://maps.app.goo.gl/86add65A8fy8MXVN7",
+      mapUrl: "https://maps.app.goo.gl/LSWdCG5u2hYtwEvXA",
       coordinates: {
         lat: 40.7232,
         lng: -73.9591
@@ -57,7 +57,7 @@ const locations: LocationCategories = {
       name: "L'industrie Pizzeria",
       description: "Local favorite serving excellent NY-style pizza with creative toppings.",
       address: "254 S 2nd St, Brooklyn, NY 11211",
-      mapUrl: "https://maps.app.goo.gl/wGSs41rHrYH5GQWP6",
+      mapUrl: "https://maps.app.goo.gl/RsP7MzGcDGH9ZLRf9",
       coordinates: {
         lat: 40.7124,
         lng: -73.9577
@@ -67,7 +67,7 @@ const locations: LocationCategories = {
       name: "Leon's Bagels",
       description: "Classic NYC bagel shop offering hand-rolled bagels and various spreads.",
       address: "128 Bedford Ave Suite B, Brooklyn, NY 11249",
-      mapUrl: "https://maps.app.goo.gl/sY9vYgbQH7C8AQRP7",
+      mapUrl: "https://maps.app.goo.gl/bhmTLbLbobFyFE2d9",
       coordinates: {
         lat: 40.7196,
         lng: -73.9561
@@ -81,10 +81,10 @@ const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY || '';
 const mapId = process.env.REACT_APP_GOOGLE_MAPS_ID || '';
 
 const WILLIAMSBURG_BOUNDS = {
-  north: 40.7252,
-  south: 40.7023,
-  west: -73.9776,
-  east: -73.9344
+  north: 40.7492, // Up to around Greenpoint/Long Island City
+  south: 40.6893, // Down to Navy Yard/South Williamsburg
+  west: -74.0096, // Over to East Village/Lower Manhattan
+  east: -73.9144  // Out to Bushwick/East Williamsburg
 };
 
 interface LocationCardProps extends Location {
@@ -154,8 +154,8 @@ const NeighborhoodPage: React.FC = () => {
         if (!mapRef.current) return;
 
         const mapOptions = {
-          center: { lat: 40.7138, lng: -73.9624 },
-          zoom: 15,
+          center: { lat: 40.7182, lng: -73.9596 },
+          zoom: 10,
           mapId: mapId,
           restriction: {
             latLngBounds: WILLIAMSBURG_BOUNDS,
@@ -234,8 +234,17 @@ const NeighborhoodPage: React.FC = () => {
 
   useEffect(() => {
     if (selectedLocation && googleMapRef.current) {
-      googleMapRef.current.panTo(selectedLocation.coordinates);
-      googleMapRef.current.setZoom(17);
+      const map = googleMapRef.current;
+
+      map.setZoom(10);
+      
+      // Simple pan
+      map.panTo(selectedLocation.coordinates);
+      
+      // Ensure zoom transition is smooth
+      google.maps.event.addListenerOnce(map, 'idle', () => {
+        map.setZoom(17);
+      });
     }
   }, [selectedLocation]);
 
