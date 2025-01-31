@@ -3,6 +3,7 @@ import { Plane, Hotel, Car } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
 import { Airport, HOTEL, VENUE, AIRPORTS } from './hotelsTypes';
 
+// HotelMap component remains unchanged
 const HotelMap: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapError, setMapError] = useState<string | null>(null);
@@ -30,7 +31,6 @@ const HotelMap: React.FC = () => {
           fullscreenControl: false,
         });
 
-        // Create markers for hotel and venue
         [
           { ...HOTEL, type: 'hotel' },
           { ...VENUE, type: 'venue' }
@@ -132,8 +132,6 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
           }
         });
 
-        // Create custom markers for start (airport) and end (hotel)
-        // Airport marker (red)
         const startPin = new PinElement({
           background: '#DC2626',
           borderColor: '#ffffff',
@@ -148,7 +146,6 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
           title: airport.name,
         });
 
-        // Hotel marker (navy)
         const endPin = new PinElement({
           background: '#1B365D',
           borderColor: '#ffffff',
@@ -185,7 +182,7 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
   }, [airport]);
 
   return (
-    <div className="h-32 w-48 rounded-lg overflow-hidden shadow-md">
+    <div className="h-48 w-full sm:h-32 sm:w-48 rounded-lg overflow-hidden shadow-md">
       {mapError ? (
         <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-xs">
           {mapError}
@@ -199,8 +196,8 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
 
 const HotelsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
-      <div className="max-w-4xl mx-auto px-8 py-24 relative">
+    <div className="min-h-screen bg-[#112543] p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
         <div className="relative z-10">
@@ -235,7 +232,6 @@ const HotelsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Hotel & Venue Map */}
             <HotelMap />
             
             <div className="text-center mt-4">
@@ -262,7 +258,7 @@ const HotelsPage: React.FC = () => {
               {AIRPORTS.map((airport) => (
                 <div 
                   key={airport.code}
-                  className="flex items-center space-x-6 p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center gap-6 p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
                 >
                   {/* Airport Info */}
                   <div className="flex-1">

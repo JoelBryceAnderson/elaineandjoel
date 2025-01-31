@@ -145,7 +145,7 @@ const EventMap: React.FC<EventMapProps> = ({ coordinates, name }) => {
   }, [coordinates, name]);
 
   return (
-    <div className="h-32 w-48 rounded-lg overflow-hidden shadow-md">
+    <div className="w-full h-full rounded-lg overflow-hidden shadow-md">
       {mapError ? (
         <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-xs">
           {mapError}
@@ -198,7 +198,7 @@ const EventsPage: React.FC = () => {
                         className="p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
                       >
                         {/* Event Info */}
-                        <div className="flex items-center space-x-6">
+                        <div className="flex flex-col md:flex-row md:items-start md:space-x-6 space-y-6 md:space-y-0">
                           <div className="flex-1">
                             <div className="flex items-center mb-2">
                               <h3 className="text-lg font-medium text-[#1B365D]">
@@ -225,18 +225,20 @@ const EventsPage: React.FC = () => {
                             </div>
                           </div>
 
-                          <div className="space-y-2">
+                          <div className="space-y-2 w-full md:w-48">
                             {/* Event Location Map */}
-                            <EventMap 
-                              coordinates={event.coordinates}
-                              name={event.location}
-                            />
+                            <div className="w-full md:w-48 h-48 md:h-32">
+                              <EventMap 
+                                coordinates={event.coordinates}
+                                name={event.location}
+                              />
+                            </div>
                             {/* Add to Calendar Button */}
                             <a
                               href={generateCalendarLink(event)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block w-48 text-center px-3 py-2 rounded-md bg-[#1B365D]/10 text-[#1B365D] hover:bg-[#1B365D]/20 transition-colors text-sm"
+                              className="block w-full text-center px-3 py-2 rounded-md bg-[#1B365D]/10 text-[#1B365D] hover:bg-[#1B365D]/20 transition-colors text-sm"
                             >
                               <CalendarPlus className="w-4 h-4 inline-block mr-1" />
                               Add to Calendar
