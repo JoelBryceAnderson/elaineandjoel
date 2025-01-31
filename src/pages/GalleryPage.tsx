@@ -75,7 +75,7 @@ const GalleryPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#112543] p-8">
-      <div className="max-w-6xl mx-auto px-8 py-24 relative">
+      <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
         <div className="relative z-10 space-y-8">
