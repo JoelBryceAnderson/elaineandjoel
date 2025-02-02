@@ -1,4 +1,4 @@
-import { RsvpData } from '../server/api/types';
+import { RsvpData } from '../types/rsvp';
 
 // Use Netlify function endpoint
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/.netlify/functions';
@@ -19,10 +19,10 @@ export const submitRsvp = async (inviteCode: string, rsvpResponse: RsvpData['res
     },
     body: JSON.stringify({ inviteCode, response: rsvpResponse }),
   });
-  
+
   if (!response.ok) {
     throw new Error('Failed to submit RSVP');
   }
-  
+
   return response.json();
 };

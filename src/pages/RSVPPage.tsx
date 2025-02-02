@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, PartyPopper } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchRsvpData, submitRsvp } from '../utils/api';
-import { RsvpData } from '../server/api/types';
+import { RsvpData } from '../types/rsvp';
 
 interface FormData {
   attending: boolean | null;
