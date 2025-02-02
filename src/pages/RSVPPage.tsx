@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, PartyPopper } from 'lucide-react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchRsvpData, submitRsvp } from '../utils/api';
 import { RsvpData } from '../types/rsvp';
 
