@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import GiftsPage from './pages/GiftsPage';
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/rsvp",
+        element: <Navigate to="/" replace />
+      },
+      {
+        path: "/rsvp/:inviteCode",
         element: <RSVPPage />
       },
       {
