@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 import { google } from 'googleapis';
-import { RsvpData } from '../../src/server/api/types';
+import { RsvpData } from '../../src/types/rsvp';
 
 // Configure Google Sheets authentication
 const credentials = {
@@ -83,6 +83,10 @@ export const handler: Handler = async (event, context) => {
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   };
 
+  // Extract invite code from the full path
+  const pathParts = event.path.split('/');
+  const inviteCode = pathParts[pathParts.length - 1];
+
   // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
@@ -106,8 +110,6 @@ export const handler: Handler = async (event, context) => {
 
     // GET request to fetch RSVP data
     if (event.httpMethod === 'GET') {
-      const inviteCode = event.path.split('/').pop();
-      
       if (!inviteCode) {
         return {
           statusCode: 400,
