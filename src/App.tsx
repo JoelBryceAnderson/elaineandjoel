@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/rsvp",
-        element: <Navigate to="/" replace />
+        element: <RSVPPage />
       },
       {
         path: "/rsvp/:inviteCode",

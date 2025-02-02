@@ -39,37 +39,44 @@ const initialFormData: FormData = {
 };
 
 const RSVPPage: React.FC = () => {
-  const { inviteCode } = useParams<{ inviteCode: string }>();
+  const { inviteCode: urlInviteCode } = useParams<{ inviteCode: string }>();
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [rsvpData, setRsvpData] = useState<RsvpData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [enteredInviteCode, setEnteredInviteCode] = useState<string>(urlInviteCode || '');
 
   useEffect(() => {
     const loadRsvpData = async () => {
-      if (!inviteCode) {
-        setError('No invite code provided');
-        setIsLoading(false);
-        return;
-      }
-
-      try {
-        const data = await fetchRsvpData(inviteCode);
-        setRsvpData(data);
-        if (data.response) {
-          setFormData(data.response);
-          setCurrentStep(5); // Go to confirmation if already responded
+      // If invite code is in URL, try to fetch RSVP data
+      if (urlInviteCode) {
+        try {
+          const data = await fetchRsvpData(urlInviteCode);
+          setRsvpData(data);
+          setEnteredInviteCode(urlInviteCode);
+          if (data.response) {
+            setFormData(data.response);
+            setCurrentStep(5); // Go to confirmation if already responded
+          } else {
+            setCurrentStep(0); // Invite code entry/verification step
+          }
+        } catch (err) {
+          console.error('RSVP Data Fetch Error:', err);
+          setError(`Failed to verify invite code: ${err instanceof Error ? err.message : 'Unknown error'}`);
+          setCurrentStep(0); // Invite code entry step
+        } finally {
+          setIsLoading(false);
         }
-      } catch (err) {
-        setError('Invalid invite code');
-      } finally {
+      } else {
+        // If no invite code, directly show invite code entry
+        setCurrentStep(0);
         setIsLoading(false);
       }
     };
 
     loadRsvpData();
-  }, [inviteCode]);
+  }, [urlInviteCode]);
 
   const updateFormData: UpdateFormDataFunction = (key, value, index?) => {
     setFormData(prev => {
@@ -83,10 +90,10 @@ const RSVPPage: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    if (!inviteCode || !rsvpData || formData.attending === null) return;
+    if (!enteredInviteCode || !rsvpData || formData.attending === null) return;
 
     try {
-      await submitRsvp(inviteCode, {
+      await submitRsvp(enteredInviteCode, {
         ...formData,
         attending: formData.attending, // This ensures TypeScript knows it's boolean
         submittedAt: new Date().toISOString(),
@@ -107,6 +114,70 @@ const RSVPPage: React.FC = () => {
     );
   }
 
+
+  const handleVerifyInviteCode = async () => {
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const data = await fetchRsvpData(enteredInviteCode);
+      setRsvpData(data);
+      setCurrentStep(1); // Move to first main question
+    } catch (err) {
+      console.error('Invite code verification failed:', err);
+      setError('Invalid invite code. Please try again.');
+      setRsvpData(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Specifically handle the initial invite code entry step
+  if (currentStep === 0) {
+    return (
+      <div className="min-h-screen bg-[#112543] p-8">
+        <div className="max-w-2xl mx-auto px-8 py-24 relative">
+          <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
+          
+          <div className="relative z-10">
+            <div className="text-center space-y-8 mb-16">
+              <h2 className="text-[#1B365D] tracking-wide text-sm">PLEASE</h2>
+              <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
+                RSVP
+              </h1>
+              <p className="text-[#1B365D]">by October 1, 2025</p>
+            </div>
+
+            <div className="space-y-6">
+              <h2 className="text-2xl font-serif text-[#1B365D] text-center">Enter Your Invite Code</h2>
+              <div className="flex flex-col items-center space-y-4">
+                <input
+                  type="text"
+                  placeholder="Invite Code"
+                  value={enteredInviteCode}
+                  onChange={(e) => setEnteredInviteCode(e.target.value.toUpperCase().trim())}
+                  className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none text-center"
+                  aria-label="Invite Code"
+                  maxLength={10}
+                />
+                {error && <p className="text-red-500 text-sm">{error}</p>}
+                <button
+                  onClick={handleVerifyInviteCode}
+                  disabled={!enteredInviteCode}
+                  className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  type="button"
+                  aria-label="Verify Invite Code"
+                >
+                  Submit Invite Code
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (error || !rsvpData) {
     return (
       <div className="min-h-screen bg-[#112543] p-8 flex items-center justify-center">
@@ -118,6 +189,35 @@ const RSVPPage: React.FC = () => {
   }
 
   const questions: Question[] = [
+    {
+      id: 'inviteCode',
+      component: (
+        <div className="space-y-6">
+          <h2 className="text-2xl font-serif text-[#1B365D] text-center">Enter Your Invite Code</h2>
+          <div className="flex flex-col items-center space-y-4">
+            <input
+              type="text"
+              placeholder="Invite Code"
+              value={enteredInviteCode}
+              onChange={(e) => setEnteredInviteCode(e.target.value.toUpperCase().trim())}
+              className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none text-center uppercase"
+              aria-label="Invite Code"
+              maxLength={10}
+            />
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+            <button
+              onClick={handleVerifyInviteCode}
+              disabled={!enteredInviteCode || isLoading}
+              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              type="button"
+              aria-label="Verify Invite Code"
+            >
+              {isLoading ? 'Verifying...' : 'Submit Invite Code'}
+            </button>
+          </div>
+        </div>
+      )
+    },
     {
       id: 'attending',
       component: (
