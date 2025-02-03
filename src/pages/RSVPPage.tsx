@@ -93,12 +93,14 @@ const RSVPPage: React.FC = () => {
     if (!enteredInviteCode || !rsvpData || formData.attending === null) return;
 
     try {
+      setIsLoading(true);
       await submitRsvp(enteredInviteCode, {
         ...formData,
         attending: formData.attending, // This ensures TypeScript knows it's boolean
         submittedAt: new Date().toISOString(),
       });
-      setCurrentStep(5);
+      setIsLoading(false);
+      setCurrentStep(6);
     } catch (err) {
       setError('Failed to submit RSVP. Please try again.');
     }
@@ -227,7 +229,7 @@ const RSVPPage: React.FC = () => {
             <button
               onClick={() => {
                 updateFormData('attending', true);
-                setCurrentStep(1);
+                setCurrentStep(2);
               }}
               className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
@@ -240,7 +242,7 @@ const RSVPPage: React.FC = () => {
                 updateFormData('attending', false);
                 handleSubmit();
               }}
-              className="px-8 py-3 border-2 border-[#C5A572] text-[#1B365D] rounded-lg hover:bg-[#1B365D] hover:text-white transition-colors"
+              className="px-8 py-xx3 border-2 border-[#C5A572] text-[#1B365D] rounded-lg hover:bg-[#1B365D] hover:text-white transition-colors"
               type="button"
               aria-label="No, I can't make it"
             >
@@ -267,7 +269,7 @@ const RSVPPage: React.FC = () => {
                   guestNames: Array(count).fill(''),
                   dietaryRestrictions: Array(count).fill('')
                 }));
-                setCurrentStep(2);
+                setCurrentStep(3);
               }}
               className="w-24 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none"
               aria-label="Number of guests"
@@ -300,7 +302,7 @@ const RSVPPage: React.FC = () => {
             <button
               onClick={() => {
                 if (formData.guestNames.every(name => name.trim())) {
-                  setCurrentStep(3);
+                  setCurrentStep(4);
                 }
               }}
               className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
@@ -333,7 +335,7 @@ const RSVPPage: React.FC = () => {
               </div>
             ))}
             <button
-              onClick={() => setCurrentStep(4)}
+              onClick={() => setCurrentStep(5)}
               className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
               aria-label="Continue to song request"
