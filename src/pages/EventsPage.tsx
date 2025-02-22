@@ -122,7 +122,7 @@ const EventMap: React.FC<EventMapProps> = ({ coordinates, name }) => {
         });
 
         const pin = new PinElement({
-          background: '#C5A572',
+          background: '#ccac6c',
           borderColor: '#1B365D',
           glyphColor: '#1B365D',
           scale: 0.8
@@ -159,7 +159,7 @@ const EventMap: React.FC<EventMapProps> = ({ coordinates, name }) => {
 
 const EventsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
@@ -215,7 +215,7 @@ const EventsPage: React.FC = () => {
                                     href={event.mapUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-[#C5A572] transition-colors block"
+                                    className="hover:text-[#ccac6c] transition-colors block"
                                   >
                                     {event.location}
                                   </a>

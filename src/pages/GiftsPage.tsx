@@ -5,7 +5,7 @@ const GiftsPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
@@ -40,7 +40,7 @@ const GiftsPage: React.FC = () => {
                 </p>
                 <button 
                   onClick={() => setIsModalOpen(true)}
-                  className="block w-full bg-[#C5A572] text-white text-center py-4 rounded-lg hover:text-[#1B365D] hover:bg-[#FDF9F3] transition-colors"
+                  className="block w-full bg-[#ccac6c] text-white text-center py-4 rounded-lg hover:text-[#1B365D] hover:bg-[#FDF9F3] transition-colors"
                 >
                   View Honeymoon Fund QR Code
                 </button>

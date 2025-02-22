@@ -74,7 +74,7 @@ const GalleryPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         

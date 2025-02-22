@@ -104,14 +104,14 @@ const LocationCard: React.FC<LocationCardProps> = ({
   >
     <div className="flex items-center mb-2">
       <MapPin className={`w-4 h-4 mr-2 ${
-        isSelected ? 'text-[#C5A572]' : 'text-[#1B365D]'
+        isSelected ? 'text-[#ccac6c]' : 'text-[#1B365D]'
       }`} />
       <a 
         href={mapUrl}
         target="_blank"
         rel="noopener noreferrer"
         className={`font-semibold ${
-          isSelected ? 'text-[#C5A572]' : 'text-[#1B365D] hover:text-[#C5A572]'
+          isSelected ? 'text-[#ccac6c]' : 'text-[#1B365D] hover:text-[#ccac6c]'
         } transition-colors`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -177,7 +177,7 @@ const NeighborhoodPage: React.FC = () => {
           
           // Create pin element
           const pin = new PinElement({
-            background: '#C5A572',
+            background: '#ccac6c',
             borderColor: '#1B365D',
             glyphColor: '#1B365D',
           });
@@ -238,7 +238,7 @@ const NeighborhoodPage: React.FC = () => {
   }, [selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
