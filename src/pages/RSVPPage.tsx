@@ -108,7 +108,7 @@ const RSVPPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#112543] p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-[#082e5d] p-8 flex items-center justify-center">
         <div className="bg-white/95 rounded-xl p-8">
           <p className="text-[#1B365D]">Loading...</p>
         </div>
@@ -137,7 +137,7 @@ const RSVPPage: React.FC = () => {
   // Specifically handle the initial invite code entry step
   if (currentStep === 0) {
     return (
-      <div className="min-h-screen bg-[#112543] p-8">
+      <div className="min-h-screen bg-[#082e5d] p-8">
         <div className="max-w-2xl mx-auto px-8 py-24 relative">
           <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
           
@@ -158,7 +158,7 @@ const RSVPPage: React.FC = () => {
                   placeholder="Invite Code"
                   value={enteredInviteCode}
                   onChange={(e) => setEnteredInviteCode(e.target.value.toUpperCase().trim())}
-                  className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none text-center"
+                  className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none text-center"
                   aria-label="Invite Code"
                   maxLength={10}
                 />
@@ -166,7 +166,7 @@ const RSVPPage: React.FC = () => {
                 <button
                   onClick={handleVerifyInviteCode}
                   disabled={!enteredInviteCode}
-                  className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   type="button"
                   aria-label="Verify Invite Code"
                 >
@@ -182,7 +182,7 @@ const RSVPPage: React.FC = () => {
 
   if (error || !rsvpData) {
     return (
-      <div className="min-h-screen bg-[#112543] p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-[#082e5d] p-8 flex items-center justify-center">
         <div className="bg-white/95 rounded-xl p-8">
           <p className="text-[#1B365D]">{error || 'Something went wrong'}</p>
         </div>
@@ -202,7 +202,7 @@ const RSVPPage: React.FC = () => {
               placeholder="Invite Code"
               value={enteredInviteCode}
               onChange={(e) => setEnteredInviteCode(e.target.value.toUpperCase().trim())}
-              className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none text-center uppercase"
+              className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none text-center uppercase"
               aria-label="Invite Code"
               maxLength={10}
             />
@@ -210,7 +210,7 @@ const RSVPPage: React.FC = () => {
             <button
               onClick={handleVerifyInviteCode}
               disabled={!enteredInviteCode || isLoading}
-              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               type="button"
               aria-label="Verify Invite Code"
             >
@@ -231,7 +231,7 @@ const RSVPPage: React.FC = () => {
                 updateFormData('attending', true);
                 setCurrentStep(2);
               }}
-              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
+              className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
               aria-label="Yes, I'll be there"
             >
@@ -242,7 +242,7 @@ const RSVPPage: React.FC = () => {
                 updateFormData('attending', false);
                 handleSubmit();
               }}
-              className="px-8 py-xx3 border-2 border-[#C5A572] text-[#1B365D] rounded-lg hover:bg-[#1B365D] hover:text-white transition-colors"
+              className="px-8 py-xx3 border-2 border-[#ccac6c] text-[#1B365D] rounded-lg hover:bg-[#1B365D] hover:text-white transition-colors"
               type="button"
               aria-label="No, I can't make it"
             >
@@ -271,7 +271,7 @@ const RSVPPage: React.FC = () => {
                 }));
                 setCurrentStep(3);
               }}
-              className="w-24 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none"
+              className="w-24 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none"
               aria-label="Number of guests"
             >
               {Array.from({length: rsvpData.guestGroup.maxGuests}, (_, i) => i + 1).map(num => (
@@ -295,7 +295,7 @@ const RSVPPage: React.FC = () => {
                 placeholder={`Guest ${index + 1} name`}
                 value={formData.guestNames[index] || ''}
                 onChange={(e) => updateFormData('guestNames', e.target.value, index)}
-                className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none"
+                className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none"
                 aria-label={`Guest ${index + 1} name`}
               />
             ))}
@@ -305,7 +305,7 @@ const RSVPPage: React.FC = () => {
                   setCurrentStep(4);
                 }
               }}
-              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
+              className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
               aria-label="Continue to dietary restrictions"
             >
@@ -329,14 +329,14 @@ const RSVPPage: React.FC = () => {
                   placeholder="Any dietary restrictions?"
                   value={formData.dietaryRestrictions[index] || ''}
                   onChange={(e) => updateFormData('dietaryRestrictions', e.target.value, index)}
-                  className="w-full px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none"
                   aria-label={`Dietary restrictions for ${name}`}
                 />
               </div>
             ))}
             <button
               onClick={() => setCurrentStep(5)}
-              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
+              className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
               aria-label="Continue to song request"
             >
@@ -360,14 +360,14 @@ const RSVPPage: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
                 updateFormData('songRequest', e.target.value)
               }
-              className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#C5A572] focus:outline-none"
+              className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none"
               aria-label="Song request"
             />
           </div>
           <div className="flex justify-center">
             <button
               onClick={handleSubmit}
-              className="px-8 py-3 bg-[#C5A572] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
+              className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors"
               type="button"
               aria-label="Submit RSVP"
             >
@@ -383,9 +383,9 @@ const RSVPPage: React.FC = () => {
         <div className="space-y-6 text-center">
           <div className="flex justify-center">
             {formData.attending === true ? (
-              <PartyPopper className="w-16 h-16 text-[#C5A572]" aria-hidden="true" />
+              <PartyPopper className="w-16 h-16 text-[#ccac6c]" aria-hidden="true" />
             ) : (
-              <Heart className="w-16 h-16 text-[#C5A572]" aria-hidden="true" />
+              <Heart className="w-16 h-16 text-[#ccac6c]" aria-hidden="true" />
             )}
           </div>
           <h2 className="text-2xl font-serif text-[#1B365D]">
@@ -414,7 +414,7 @@ const RSVPPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         

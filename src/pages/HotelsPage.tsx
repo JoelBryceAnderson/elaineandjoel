@@ -46,7 +46,7 @@ const HotelMap: React.FC = () => {
           pinContainer.style.bottom = '24px';
           
           const pin = new PinElement({
-            background: location.type === 'venue' ? '#C5A572' : '#1B365D',
+            background: location.type === 'venue' ? '#ccac6c' : '#1B365D',
             borderColor: '#FFFFFF',
             glyphColor: '#FFFFFF',
           });
@@ -196,7 +196,7 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
 
 const HotelsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#112543] p-4 sm:p-8">
+    <div className="min-h-screen bg-[#082e5d] p-4 sm:p-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-8 py-12 sm:py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
@@ -222,7 +222,7 @@ const HotelsPage: React.FC = () => {
                     href={HOTEL.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#C5A572] transition-colors"
+                    className="hover:text-[#ccac6c] transition-colors"
                   >
                     {HOTEL.name}
                   </a>
@@ -268,7 +268,7 @@ const HotelsPage: React.FC = () => {
                           href={airport.mapUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:text-[#C5A572] transition-colors"
+                          className="hover:text-[#ccac6c] transition-colors"
                         >
                           {airport.name}
                         </a>

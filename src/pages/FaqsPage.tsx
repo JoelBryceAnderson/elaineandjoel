@@ -22,7 +22,7 @@ const FaqItem: React.FC<FAQItemProps> = ({ question, answer }) => {
       >
         <span className="text-[#1B365D] font-medium">{question}</span>
         <ChevronDown 
-          className={`w-5 h-5 text-[#C5A572] transform transition-transform duration-200 ${
+          className={`w-5 h-5 text-[#ccac6c] transform transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
@@ -79,7 +79,7 @@ const FaqsPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#112543] p-8">
+    <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         
