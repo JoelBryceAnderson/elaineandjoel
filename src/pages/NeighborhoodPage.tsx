@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MapPin, LandPlot, Utensils } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
+import PageTemplate from "../components/PageTemplate";
 
 // Type definitions
 declare global {
@@ -238,67 +239,57 @@ const NeighborhoodPage: React.FC = () => {
   }, [selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-[#082e5d] p-8">
-      <div className="max-w-2xl mx-auto px-8 py-24 relative">
-        <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
-        
-        <div className="relative z-10">
-          {/* Main content */}
-          <div className="text-center space-y-8 mb-16">
-            <h2 className="text-[#1B365D] tracking-wide text-sm">WELCOME TO</h2>
-            <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
-              Williamsburg
-            </h1>
-            <p className="text-[#1B365D] mt-3">Our favorite spots in the neighborhood</p>
-          </div>
+    <PageTemplate
+      title="Williamsburg, BK"
+      subtitle="Our favorite spots in the neighborhood."
+    >          
+        <div className="ml-12 mr-12">
+            <div className="space-y-12">
+              {/* Map Section */}
+              <div className="h-96 rounded-lg overflow-hidden shadow-lg mb-12">
+                {mapError ? (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500">
+                    {mapError}
+                  </div>
+                ) : (
+                  <div ref={mapRef} className="w-full h-full" />
+                )}
+              </div>
 
-          <div className="space-y-12">
-            {/* Map Section */}
-            <div className="h-96 rounded-lg overflow-hidden shadow-lg mb-12">
-              {mapError ? (
-                <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500">
-                  {mapError}
+              {/* Parks Section */}
+              <div>
+                <div className="flex items-center mb-6">
+                  <LandPlot className="w-5 h-5 mr-2 text-[#1B365D]" />
+                  <h2 className="text-xl font-medium text-[#1B365D]">Parks & Waterfront</h2>
                 </div>
-              ) : (
-                <div ref={mapRef} className="w-full h-full" />
-              )}
-            </div>
-
-            {/* Parks Section */}
-            <div>
-              <div className="flex items-center mb-6">
-                <LandPlot className="w-5 h-5 mr-2 text-[#1B365D]" />
-                <h2 className="text-xl font-medium text-[#1B365D]">Parks & Waterfront</h2>
+                {locations.parks.map((location) => (
+                  <LocationCard 
+                    key={location.name} 
+                    {...location} 
+                    isSelected={selectedLocation?.name === location.name}
+                    onSelect={() => setSelectedLocation(location)}
+                  />
+                ))}
               </div>
-              {locations.parks.map((location) => (
-                <LocationCard 
-                  key={location.name} 
-                  {...location} 
-                  isSelected={selectedLocation?.name === location.name}
-                  onSelect={() => setSelectedLocation(location)}
-                />
-              ))}
-            </div>
 
-            {/* Food Section */}
-            <div>
-              <div className="flex items-center mb-6">
-                <Utensils className="w-5 h-5 mr-2 text-[#1B365D]" />
-                <h2 className="text-xl font-medium text-[#1B365D]">Food & Drinks</h2>
+              {/* Food Section */}
+              <div>
+                <div className="flex items-center mb-6">
+                  <Utensils className="w-5 h-5 mr-2 text-[#1B365D]" />
+                  <h2 className="text-xl font-medium text-[#1B365D]">Food & Drinks</h2>
+                </div>
+                {locations.food.map((location) => (
+                  <LocationCard 
+                    key={location.name} 
+                    {...location} 
+                    isSelected={selectedLocation?.name === location.name}
+                    onSelect={() => setSelectedLocation(location)}
+                  />
+                ))}
               </div>
-              {locations.food.map((location) => (
-                <LocationCard 
-                  key={location.name} 
-                  {...location} 
-                  isSelected={selectedLocation?.name === location.name}
-                  onSelect={() => setSelectedLocation(location)}
-                />
-              ))}
-            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </PageTemplate>
   );
 };
 

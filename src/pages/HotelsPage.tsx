@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Plane, Hotel, Car } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
 import { Airport, HOTEL, VENUE, AIRPORTS } from './hotelsTypes';
+import PageTemplate from "../components/PageTemplate";
 
 // HotelMap component remains unchanged
 const HotelMap: React.FC = () => {
@@ -196,105 +197,95 @@ const RouteMap: React.FC<{ airport: Airport }> = ({ airport }) => {
 
 const HotelsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#082e5d] p-4 sm:p-8">
-      <div className="max-w-2xl mx-auto px-4 sm:px-8 py-12 sm:py-24 relative">
-        <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
-        
-        <div className="relative z-10">
-          {/* Header */}
-          <div className="text-center space-y-8 mb-16">
-            <h2 className="text-[#1B365D] tracking-wide text-sm">TRAVEL &</h2>
-            <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
-              Accommodations
-            </h1>
-          </div>
+    <PageTemplate
+      title="Accommodations"
+      subtitle="Hotels, airports, and useful travel tips"
+    >
 
-          {/* Hotel Section */}
-          <div className="mb-24">
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center mb-4">
-                <Hotel className="w-6 h-6 mr-2 text-[#1B365D]" />
-                <h2 className="text-2xl font-medium text-[#1B365D]">Where to Stay</h2>
-              </div>
-              <div className="max-w-2xl mx-auto">
-                <h3 className="text-xl font-medium text-[#1B365D] mb-2">
+    {/* Hotel Section */}
+    <div className="mb-12">
+      <div className="text-center mb-12">
+        <div className="flex items-center justify-center mb-4">
+          <Hotel className="w-6 h-6 mr-2 text-[#1B365D]" />
+          <h2 className="text-2xl font-medium text-[#1B365D]">Where to Stay</h2>
+        </div>
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-xl font-medium text-[#1B365D] mb-2">
+            <a 
+              href={HOTEL.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#ccac6c] transition-colors"
+            >
+              {HOTEL.name}
+            </a>
+          </h3>
+          <p className="text-gray-600 mb-2">{HOTEL.description}</p>
+          <p className="text-gray-500">{HOTEL.address}</p>
+        </div>
+      </div>
+
+      <HotelMap />
+      
+      <div className="text-center mt-4">
+        <p className="text-sm text-gray-500">
+          The hotel is just a {" "}
+          <span className="font-medium text-[#1B365D]">12-minute walk</span>
+          {" "} or {" "}
+          <span className="font-medium text-[#1B365D]">5-minute drive</span>
+          {" "} from the venue
+        </p>
+      </div>
+    </div>
+
+    {/* Airports Section */}
+    <div>
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center mb-4">
+          <Plane className="w-6 h-6 mr-2 text-[#1B365D]" />
+          <h2 className="text-2xl font-medium text-[#1B365D]">Getting Here</h2>
+        </div>
+      </div>
+
+      <div className="space-y-8">
+        {AIRPORTS.map((airport) => (
+          <div 
+            key={airport.code}
+            className="flex flex-col sm:flex-row sm:items-center gap-6 p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
+          >
+            {/* Airport Info */}
+            <div className="flex-1">
+              <div className="flex items-center mb-2">
+                <h3 className="text-lg font-medium text-[#1B365D]">
                   <a 
-                    href={HOTEL.mapUrl}
+                    href={airport.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-[#ccac6c] transition-colors"
                   >
-                    {HOTEL.name}
+                    {airport.name}
                   </a>
                 </h3>
-                <p className="text-gray-600 mb-2">{HOTEL.description}</p>
-                <p className="text-gray-500">{HOTEL.address}</p>
+                <span className="ml-2 text-sm font-medium text-gray-500">({airport.code})</span>
+              </div>
+              <p className="text-gray-600 mb-2">{airport.description}</p>
+              <div className="flex items-center space-x-4 text-sm text-gray-500">
+                <span className="flex items-center">
+                  <Car className="w-4 h-4 mr-1" />
+                  {airport.travelInfo.drivingTime}
+                </span>
+                <span>•</span>
+                <span>{airport.travelInfo.distance}</span>
               </div>
             </div>
 
-            <HotelMap />
-            
-            <div className="text-center mt-4">
-              <p className="text-sm text-gray-500">
-                The hotel is just a {" "}
-                <span className="font-medium text-[#1B365D]">12-minute walk</span>
-                {" "} or {" "}
-                <span className="font-medium text-[#1B365D]">5-minute drive</span>
-                {" "} from the venue
-              </p>
-            </div>
+            {/* Route Map */}
+            <RouteMap airport={airport} />
           </div>
-
-          {/* Airports Section */}
-          <div>
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center mb-4">
-                <Plane className="w-6 h-6 mr-2 text-[#1B365D]" />
-                <h2 className="text-2xl font-medium text-[#1B365D]">Getting Here</h2>
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              {AIRPORTS.map((airport) => (
-                <div 
-                  key={airport.code}
-                  className="flex flex-col sm:flex-row sm:items-center gap-6 p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
-                >
-                  {/* Airport Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center mb-2">
-                      <h3 className="text-lg font-medium text-[#1B365D]">
-                        <a 
-                          href={airport.mapUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-[#ccac6c] transition-colors"
-                        >
-                          {airport.name}
-                        </a>
-                      </h3>
-                      <span className="ml-2 text-sm font-medium text-gray-500">({airport.code})</span>
-                    </div>
-                    <p className="text-gray-600 mb-2">{airport.description}</p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
-                      <span className="flex items-center">
-                        <Car className="w-4 h-4 mr-1" />
-                        {airport.travelInfo.drivingTime}
-                      </span>
-                      <span>•</span>
-                      <span>{airport.travelInfo.distance}</span>
-                    </div>
-                  </div>
-
-                  {/* Route Map */}
-                  <RouteMap airport={airport} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
-    </div>
+      </div>
+    </PageTemplate>
   );
 };
 

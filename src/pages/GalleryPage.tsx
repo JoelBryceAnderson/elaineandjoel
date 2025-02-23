@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
+import PageTemplate from "../components/PageTemplate";
 
 interface GalleryImage {
   id: number;
@@ -74,37 +75,31 @@ const GalleryPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#082e5d] p-8">
-      <div className="max-w-2xl mx-auto px-8 py-24 relative">
-        <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
-        
-        <div className="relative z-10 space-y-8">
-          <h1 className="text-3xl font-serif text-center text-gray-800 mb-12">
-            Our Gallery
-          </h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {galleryImages.map((image) => (
-              <div
-                key={image.id}
-                className="relative group cursor-pointer overflow-hidden rounded-lg"
-                onClick={() => setSelectedImage(image)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
-                  <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-lg font-medium">
-                    {image.title}
-                  </p>
-                </div>
+    <div>
+      <PageTemplate
+        title="Our Gallery"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-12 pl-12 pr-12">
+          {galleryImages.map((image) => (
+            <div
+              key={image.id}
+              className="relative group cursor-pointer overflow-hidden rounded-lg"
+              onClick={() => setSelectedImage(image)}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center">
+                <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-lg font-medium">
+                  {image.title}
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
+          ))}
+        </div>  
+      </PageTemplate>
 
       <ImageModal
         image={selectedImage}
