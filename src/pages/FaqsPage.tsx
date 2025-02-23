@@ -16,7 +16,7 @@ const FaqItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (    
-    <div className="border-b border-gray-200">
+    <div className="border-b border-gray-200 pr-12 pl-12">
       <button
         className="w-full py-4 flex justify-between items-center text-left"
         onClick={() => setIsOpen(!isOpen)}
@@ -81,31 +81,18 @@ const FaqsPage: React.FC = () => {
 
   return (
   <div>
-  <PageTemplate
-    title="Frequently Asked Questions"
-    subtitle="These answers are currently not true. Do not trust them."
-  >
-          
-       {/* Header section */}
-        <div className="text-center space-y-8 mb-16 mt-60">
-          <h2 className="text-[#1B365D] tracking-wide text-sm">WEDDING DETAILS</h2>
-          <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-[#1B365D] mt-6">
-            These answers are currently not true. Do not trust them.
-          </p>
-        </div>
-
-        {/* FAQs section */}
-        <div className="max-w-xl mx-auto">
+    <PageTemplate
+      title="Frequently Asked Questions"
+      subtitle="These answers are currently not true. Do not trust them."
+    >          
+        <div className="max-w-2xl mx-auto">
           <div className="space-y-1">
             {faqs.map((faq, index) => (
               <FaqItem key={index} question={faq.question} answer={faq.answer} />
             ))}
           </div>
         </div>
-    </PageTemplate>
+      </PageTemplate>
     </div>
   );
 };
