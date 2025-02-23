@@ -32,14 +32,14 @@ const HomePage: React.FC = () => {
           <img 
             src="/images/brick.png" 
             alt="Brick Background" 
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-95"
+            className="absolute inset-0 w-full h-full object-cover object-top opacity-95"
           />
 
           {/* Flowers top image */}
           <img 
             src="/images/flowers_top.png" 
             alt="Flowers Top" 
-            className="absolute top-0 left-0 w-full object-cover object-top -mt-16"
+            className="absolute top-0 left-0 w-full object-cover object-top -mt-24"
             style={{
               height: 'calc(320px + 2rem)', // Original height + negative margin
               zIndex: 0
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
         {/* Main content wrapper with relative positioning */}
         <div className="relative z-10">          
           {/* Text content */}
-          <div className="text-center mb-12 mt-12 relative z-10 pt-48">
+          <div className="text-center mb-12 mt-12 relative z-10 pt-40">
             <p className="text-[#1B365D] font-light text-3xl">YOU ARE INVITED TO</p>
             <p className="text-[#1B365D] text-xl">the wedding of</p>
             

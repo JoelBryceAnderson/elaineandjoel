@@ -25,17 +25,22 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
             <img 
               src="/images/brick.png" 
               alt="Brick Background" 
-              className="absolute inset-0 w-full h-full/2 object-cover object-center opacity-95 z-0"
+              className="absolute inset-0 w-full h-full object-cover object-top opacity-95 z-0"
+              style={{
+                transform: 'scale(1.2)', // Adjust this value to zoom more or less
+                transformOrigin: 'center center', // This centers the zoom
+              }}
             />
 
             {/* Flowers top image */}
             <img 
               src="/images/flowers_top.png" 
               alt="Flowers Top" 
-              className="absolute top-0 left-0 w-full object-cover object-top -mt-16"
+              className="absolute top-0 left-0 w-full object-cover object-top -mt-24"
               style={{
-                height: 'calc(320px + 2rem)', // Original height + negative margin
-                zIndex: 0
+                height: 'calc(320px + 2rem)', // Keep original height calculation
+                zIndex: 1, // Ensure it's behind content but visible
+                opacity: 0.9 // Slightly reduce opacity to help with text visibility
               }}
             />
 
@@ -43,8 +48,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
             <div className="relative z-10">
 
             {/* Header section */}
-             <div className="text-center mb-16 pt-64">
-               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
+             <div className="text-center mb-12 pt-72 relative z-20">
+               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D] pl-32 pr-32">
                  {title}
                </h1>
                {/* embellishment */}
@@ -52,7 +57,6 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
                  className="h-12 bg-contain bg-no-repeat bg-center"
                  style={{
                    backgroundImage: 'url(/images/embellishment.png)',
-                   zIndex: 0,
                  }} 
                />
                <p className="text-[#1B365D] pl-32 pr-32">
@@ -63,7 +67,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
           </div>
 
           {/* Children content */}
-          <div className={`relative z-20 bg-gray-100 ${className}`}>
+          <div className={`relative z-20 bg-white pt-8 ${className}`}>
             <div className={`pb-12 relative ${className}`}>
               {children}
             </div>

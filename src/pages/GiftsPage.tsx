@@ -27,7 +27,7 @@ const GiftsPage: React.FC = () => {
             </a>
           </div>
 
-          <div className="bg-gray-50 p-8 rounded-lg mr-12 ml-12 mt-12">
+          <div className="bg-gray-50 p-8 rounded-lg mr-12 ml-12 mt-8">
             <h2 className="text-xl font-semibold mb-4">Contribute to Our Honeymoon Adventure</h2>
             <p className="mb-6">
               If you'd like to help us create lasting memories on our honeymoon, you can contribute to our honeymoon fund.
