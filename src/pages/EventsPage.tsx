@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Calendar, MapPin, CalendarPlus } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
+import PageTemplate from "../components/PageTemplate";
 
 // Helper function to generate calendar links
 const generateCalendarLink = (event: typeof EVENTS[0]) => {
@@ -159,102 +160,90 @@ const EventMap: React.FC<EventMapProps> = ({ coordinates, name }) => {
 
 const EventsPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#082e5d] p-8">
-      <div className="max-w-2xl mx-auto px-8 py-24 relative">
-        <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
-        
-        <div className="relative z-10">
-          {/* Header */}
-          <div className="text-center space-y-8 mb-16">
-            <h2 className="text-[#1B365D] tracking-wide text-sm">WEDDING</h2>
-            <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
-              Schedule of Events
-            </h1>
-          </div>
+    <PageTemplate
+      title="Schedule of Events"
+      subtitle="Currently subject to change."
+    >
+    <div>
+      <div className="text-center">
+        <div className="flex items-center justify-center mb-4">
+          <Calendar className="w-6 h-6 mr-2 text-[#1B365D]" />
+          <h2 className="text-2xl font-medium text-[#1B365D]">Weekend Activities</h2>
+        </div>
+      </div>
 
-          {/* Events Section */}
-          <div>
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center mb-4">
-                <Calendar className="w-6 h-6 mr-2 text-[#1B365D]" />
-                <h2 className="text-2xl font-medium text-[#1B365D]">Weekend Activities</h2>
-              </div>
+      <div className="space-y-16 mr-12 ml-12">
+        {Object.entries(eventsByDate).map(([date, { day, events }]) => (
+          <div key={date}>
+            {/* Date Header */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-serif text-[#1B365D] mb-1">{day}</h2>
+              <p className="text-lg text-gray-500">{date}</p>
             </div>
 
-            <div className="space-y-16">
-              {Object.entries(eventsByDate).map(([date, { day, events }]) => (
-                <div key={date}>
-                  {/* Date Header */}
-                  <div className="mb-8">
-                    <h2 className="text-2xl font-serif text-[#1B365D] mb-1">{day}</h2>
-                    <p className="text-lg text-gray-500">{date}</p>
-                  </div>
-
-                  {/* Events for this date */}
-                  <div className="space-y-12">
-                    {events.map((event) => (
-                      <div 
-                        key={event.name}
-                        className="p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
-                      >
-                        {/* Event Info */}
-                        <div className="flex flex-col md:flex-row md:items-start md:space-x-6 space-y-6 md:space-y-0">
-                          <div className="flex-1">
-                            <div className="flex items-center mb-2">
-                              <h3 className="text-lg font-medium text-[#1B365D]">
-                                {event.name}
-                              </h3>
-                            </div>
-                            <p className="text-gray-600 mb-4">{event.description}</p>
-                            <div className="space-y-1 text-sm text-gray-500">
-                              <p className="font-medium">{event.time}</p>
-                              <div className="flex">
-                                <MapPin className="w-4 h-4 mt-4 mr-2 flex-shrink-0" />
-                                <div>
-                                  <a 
-                                    href={event.mapUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#ccac6c] transition-colors block"
-                                  >
-                                    {event.location}
-                                  </a>
-                                  <p className="text-gray-400">{event.address}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="space-y-2 w-full md:w-48">
-                            {/* Event Location Map */}
-                            <div className="w-full md:w-48 h-48 md:h-32">
-                              <EventMap 
-                                coordinates={event.coordinates}
-                                name={event.location}
-                              />
-                            </div>
-                            {/* Add to Calendar Button */}
-                            <a
-                              href={generateCalendarLink(event)}
+            {/* Events for this date */}
+            <div className="space-y-12">
+              {events.map((event) => (
+                <div 
+                  key={event.name}
+                  className="p-6 rounded-lg hover:bg-[#1B365D]/5 transition-colors"
+                >
+                  {/* Event Info */}
+                  <div className="flex flex-col md:flex-row md:items-start md:space-x-6 space-y-6 md:space-y-0">
+                    <div className="flex-1">
+                      <div className="flex items-center mb-2">
+                        <h3 className="text-lg font-medium text-[#1B365D]">
+                          {event.name}
+                        </h3>
+                      </div>
+                      <p className="text-gray-600 mb-4">{event.description}</p>
+                      <div className="space-y-1 text-sm text-gray-500">
+                        <p className="font-medium">{event.time}</p>
+                        <div className="flex">
+                          <MapPin className="w-4 h-4 mt-4 mr-2 flex-shrink-0" />
+                          <div>
+                            <a 
+                              href={event.mapUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block w-full text-center px-3 py-2 rounded-md bg-[#1B365D]/10 text-[#1B365D] hover:bg-[#1B365D]/20 transition-colors text-sm"
+                              className="hover:text-[#ccac6c] transition-colors block"
                             >
-                              <CalendarPlus className="w-4 h-4 inline-block mr-1" />
-                              Add to Calendar
+                              {event.location}
                             </a>
+                            <p className="text-gray-400">{event.address}</p>
                           </div>
                         </div>
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="space-y-2 w-full md:w-48">
+                      {/* Event Location Map */}
+                      <div className="w-full md:w-48 h-48 md:h-32">
+                        <EventMap 
+                          coordinates={event.coordinates}
+                          name={event.location}
+                        />
+                      </div>
+                      {/* Add to Calendar Button */}
+                      <a
+                        href={generateCalendarLink(event)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center px-3 py-2 rounded-md bg-[#1B365D]/10 text-[#1B365D] hover:bg-[#1B365D]/20 transition-colors text-sm"
+                      >
+                        <CalendarPlus className="w-4 h-4 inline-block mr-1" />
+                        Add to Calendar
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        ))}
       </div>
-    </div>
+      </div>
+    </PageTemplate>
   );
 };
 
