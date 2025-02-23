@@ -26,27 +26,31 @@ const HomePage: React.FC = () => {
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
         {/* Background for the entire card */}
         <div 
-          className="absolute inset-0 bg-white/95 rounded-xl shadow-lg overflow-hidden"  // Added overflow-hidden
-          style={{
-            backgroundImage: 'url(/images/brick.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }} 
+          className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-white/95"  
         >
-          <div 
-            className="absolute top-0 left-0 right-0 h-80 bg-contain bg-no-repeat bg-center"
+          {/* Brick background image */}
+          <img 
+            src="/images/brick.png" 
+            alt="Brick Background" 
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-95"
+          />
+
+          {/* Flowers top image */}
+          <img 
+            src="/images/flowers_top.png" 
+            alt="Flowers Top" 
+            className="absolute top-0 left-0 w-full object-cover object-top -mt-16"
             style={{
-              backgroundImage: 'url(/images/flowers_top.png)',
-              zIndex: 0,
-              marginTop: '-64px'  // Use marginTop in pixels for precise control
-            }} 
+              height: 'calc(320px + 2rem)', // Original height + negative margin
+              zIndex: 0
+            }}
           />
         </div>
         
         {/* Main content wrapper with relative positioning */}
         <div className="relative z-10">          
           {/* Text content */}
-          <div className="text-center mb-12 relative z-10 pt-48">
+          <div className="text-center mb-12 mt-12 relative z-10 pt-48">
             <p className="text-[#1B365D] font-light text-3xl">YOU ARE INVITED TO</p>
             <p className="text-[#1B365D] text-xl">the wedding of</p>
             
