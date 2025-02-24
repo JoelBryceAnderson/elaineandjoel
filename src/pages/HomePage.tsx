@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
           <div className="relative pt-8">
             <div className="absolute inset-x-0 -top-8 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent opacity-50"/>
             <nav className="pt-8 -mx-8 -mb-24">
-              <div className="grid grid-cols-2 divide-x divide-y divide-gray-100 overflow-hidden rounded-b-xl text-xl">                
+              <div className="grid grid-cols-2 divide-x divide-y divide-gray-100 overflow-hidden rounded-b-xl text-m sm:text-xl md:text-xl lg:text-xl xl:text-xl">
                 <Link 
                   to="/hotels" 
                   className="group bg-white hover:bg-[#FDF9F3] transition-all py-8"

@@ -49,7 +49,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
 
             {/* Header section */}
              <div className="text-center mb-12 pt-72 relative z-20">
-               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D] pl-12 pr-12">
+               <h1 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-3xl font-serif tracking-wide text-[#1B365D] pl-12 pr-12">
                  {title}
                </h1>
                {/* embellishment */}
@@ -64,7 +64,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
           </div>
 
           {/* Children content */}
-          <div className={`relative z-20 bg-white pt-8 ${className}`}>
+          <div className={`relative z-20 bg-white ${className}`}>
+            <div className="h-1.5 bg-gradient-to-b from-gray-200 to-white"/>
             <div className="text-center">
             <p className="text-[#1B365D] italic p-6 ml-12 mr-12 mb-8">
               {subtitle}

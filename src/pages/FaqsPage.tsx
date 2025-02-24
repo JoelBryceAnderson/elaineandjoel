@@ -82,7 +82,7 @@ const FaqsPage: React.FC = () => {
   return (
   <div>
     <PageTemplate
-      title="Frequently Asked Questions"
+      title="FAQs"
       subtitle="These answers are currently not true. Do not trust them."
     >          
         <div className="max-w-2xl mx-auto">
