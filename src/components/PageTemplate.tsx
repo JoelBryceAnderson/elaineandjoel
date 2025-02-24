@@ -49,7 +49,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
 
             {/* Header section */}
              <div className="text-center mb-12 pt-72 relative z-20">
-               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D] pl-32 pr-32">
+               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D] pl-12 pr-12">
                  {title}
                </h1>
                {/* embellishment */}
@@ -59,15 +59,15 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
                    backgroundImage: 'url(/images/embellishment.png)',
                  }} 
                />
-               <p className="text-[#1B365D] pl-32 pr-32">
-                 {subtitle}
-               </p>
              </div>
             </div>
           </div>
 
           {/* Children content */}
-          <div className={`relative z-20 bg-white pt-8 ${className}`}>
+          <div className={`text-center relative z-20 bg-white pt-8 ${className}`}>
+            <p className="text-[#1B365D] italic p-6 ml-12 mr-12 mb-8">
+              {subtitle}
+            </p>
             <div className={`pb-12 relative ${className}`}>
               {children}
             </div>
