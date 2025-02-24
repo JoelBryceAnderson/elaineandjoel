@@ -64,10 +64,12 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
           </div>
 
           {/* Children content */}
-          <div className={`text-center relative z-20 bg-white pt-8 ${className}`}>
+          <div className={`relative z-20 bg-white pt-8 ${className}`}>
+            <div className="text-center">
             <p className="text-[#1B365D] italic p-6 ml-12 mr-12 mb-8">
               {subtitle}
             </p>
+            </div>
             <div className={`pb-12 relative ${className}`}>
               {children}
             </div>
