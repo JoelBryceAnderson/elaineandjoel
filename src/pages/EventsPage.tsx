@@ -21,7 +21,7 @@ const EVENTS = [
   {
     name: "Rehearsal Dinner",
     date: "November 14, 2025",
-    day: "Thursday",
+    day: "Friday",
     time: "7:00 PM",
     location: "The Four Horsemen",
     description: "Join us for an intimate rehearsal dinner with close family and wedding party.",
@@ -35,7 +35,7 @@ const EVENTS = [
   {
     name: "Wedding Party Photos",
     date: "November 15, 2025",
-    day: "Friday",
+    day: "Saturday",
     time: "3:00 PM",
     location: "Domino Park",
     description: "Wedding party photos with Manhattan skyline backdrop.",
@@ -49,7 +49,7 @@ const EVENTS = [
   {
     name: "Wedding Ceremony & Reception",
     date: "November 15, 2025",
-    day: "Friday",
+    day: "Saturday",
     time: "6:00 PM",
     location: "Aurora Restaurant",
     description: "Ceremony followed by cocktail hour and reception.",
@@ -63,7 +63,7 @@ const EVENTS = [
   {
     name: "Farewell Brunch",
     date: "November 16, 2025",
-    day: "Saturday",
+    day: "Sunday",
     time: "11:00 AM",
     location: "Egg Shop",
     description: "Join us for a casual farewell brunch.",
