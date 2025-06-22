@@ -230,9 +230,9 @@ const HotelsPage: React.FC = () => {
       <div className="text-center mt-4">
         <p className="text-sm text-gray-500">
           The hotel is just a {" "}
-          <span className="font-medium text-[#1B365D]">12-minute walk</span>
+          <span className="font-medium text-[#1B365D]">8-minute walk</span>
           {" "} or {" "}
-          <span className="font-medium text-[#1B365D]">5-minute drive</span>
+          <span className="font-medium text-[#1B365D]">4-minute drive</span>
           {" "} from the venue
         </p>
       </div>

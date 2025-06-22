@@ -19,17 +19,17 @@ const generateCalendarLink = (event: typeof EVENTS[0]) => {
 
 const EVENTS = [
   {
-    name: "Rehearsal Dinner",
+    name: "Arrival Happy Hour",
     date: "November 14, 2025",
     day: "Friday",
     time: "7:00 PM",
-    location: "The Four Horsemen",
+    location: "Other Half Brewing Co",
     description: "Join us for an intimate rehearsal dinner with close family and wedding party.",
-    address: "295 Grand St, Brooklyn, NY 11211",
-    mapUrl: "https://maps.app.goo.gl/v5u8VKwbU5qLwNWR7",
+    address: "34 River St, Brooklyn, NY 11249",
+    mapUrl: "https://maps.app.goo.gl/2GzsbGdgK33k5eee7",
     coordinates: {
-      lat: 40.7124,
-      lng: -73.9577
+      lat: 40.7160,
+      lng: -73.9669
     }
   },
   {

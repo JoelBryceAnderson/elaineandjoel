@@ -18,13 +18,13 @@ export interface Airport extends Location {
 }
 
 export const HOTEL: Location = {
-  name: "Arlo Williamsburg",
+  name: "Pod Hotel BK",
   description: "Our suggested hotel for out-of-town guests. More details on room blocks coming soon!",
-  address: "96 Wythe Ave, Brooklyn, NY 11249",
-  mapUrl: "https://maps.app.goo.gl/Lj8LF8FSfSbsf8Zu7",
+  address: "247 Metropolitan Ave, Brooklyn, NY 11211",
+  mapUrl: "https://maps.app.goo.gl/jRnnjdkJrXdGftMv5",
   coordinates: {
-    lat: 40.7215,
-    lng: -73.9577
+    lat: 40.7151,
+    lng: -73.9589
   }
 };
 
@@ -52,7 +52,7 @@ export const AIRPORTS: Airport[] = [
     },
     travelInfo: {
       drivingTime: "30-45 minutes",
-      distance: "8.5 miles"
+      distance: "7.8 miles"
     }
   },
   {
@@ -67,7 +67,7 @@ export const AIRPORTS: Airport[] = [
     },
     travelInfo: {
       drivingTime: "45-60 minutes",
-      distance: "15.5 miles"
+      distance: "13.5 miles"
     }
   },
   {
@@ -82,7 +82,7 @@ export const AIRPORTS: Airport[] = [
     },
     travelInfo: {
       drivingTime: "60-75 minutes",
-      distance: "13.5 miles"
+      distance: "17.4 miles"
     }
   }
 ];
