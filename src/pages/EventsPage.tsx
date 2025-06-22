@@ -5,8 +5,8 @@ import PageTemplate from "../components/PageTemplate";
 
 // Helper function to generate calendar links
 const generateCalendarLink = (event: typeof EVENTS[0]) => {
-  const startDate = new Date(event.date + ' ' + event.time);
-  const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)); // Adding 2 hours as default duration
+  const startDate = new Date(event.date + ' ' + event.startTime);
+  const endDate = new Date(event.date + ' ' + event.endTime); // Adding 2 hours as default duration
   
   const formatDateForGoogle = (date: Date) => {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
@@ -22,9 +22,10 @@ const EVENTS = [
     name: "Arrival Happy Hour",
     date: "November 14, 2025",
     day: "Friday",
-    time: "7:00 PM",
+    startTime: "7:00 PM",
+    endTime: "10:00 PM",
     location: "Other Half Brewing Co",
-    description: "Join us for an intimate rehearsal dinner with close family and wedding party.",
+    description: "Join us for a welcome drink on the Williamsburg waterfront, a short walk from the hotel!",
     address: "34 River St, Brooklyn, NY 11249",
     mapUrl: "https://maps.app.goo.gl/2GzsbGdgK33k5eee7",
     coordinates: {
@@ -36,7 +37,8 @@ const EVENTS = [
     name: "Wedding Party Photos",
     date: "November 15, 2025",
     day: "Saturday",
-    time: "3:00 PM",
+    startTime: "3:00 PM",
+    endTime: "4:30 PM",
     location: "Domino Park",
     description: "Wedding party photos with Manhattan skyline backdrop.",
     address: "15 River St, Brooklyn, NY 11249",
@@ -50,7 +52,8 @@ const EVENTS = [
     name: "Wedding Ceremony & Reception",
     date: "November 15, 2025",
     day: "Saturday",
-    time: "6:00 PM",
+    startTime: "6:00 PM",
+    endTime: "12:00 PM",
     location: "Aurora Restaurant",
     description: "Ceremony followed by cocktail hour and reception.",
     address: "70 Grand Street, Brooklyn, NY",
@@ -64,7 +67,8 @@ const EVENTS = [
     name: "Farewell Brunch",
     date: "November 16, 2025",
     day: "Sunday",
-    time: "11:00 AM",
+    startTime: "11:00 AM",
+    endTime: "2:00 PM",
     location: "Egg Shop",
     description: "Join us for a casual farewell brunch.",
     address: "138 N 8th St, Brooklyn, NY 11249",
@@ -198,7 +202,7 @@ const EventsPage: React.FC = () => {
                       </div>
                       <p className="text-gray-600 mb-4">{event.description}</p>
                       <div className="space-y-1 text-sm text-gray-500">
-                        <p className="font-medium">{event.time}</p>
+                        <p className="font-medium">{event.startTime} - {event.endTime}</p>
                         <div className="flex">
                           <MapPin className="w-4 h-4 mt-4 mr-2 flex-shrink-0" />
                           <div>

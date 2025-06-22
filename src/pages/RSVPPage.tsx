@@ -63,7 +63,7 @@ const RSVPPage: React.FC = () => {
           }
         } catch (err) {
           console.error('RSVP Data Fetch Error:', err);
-          setError(`Failed to verify invite code: ${err instanceof Error ? err.message : 'Unknown error'}`);
+          setError(`Failed to verify guest name: ${err instanceof Error ? err.message : 'Unknown error'}`);
           setCurrentStep(0); // Invite code entry step
         } finally {
           setIsLoading(false);
@@ -126,15 +126,15 @@ const RSVPPage: React.FC = () => {
       setRsvpData(data);
       setCurrentStep(1); // Move to first main question
     } catch (err) {
-      console.error('Invite code verification failed:', err);
-      setError('Invalid invite code. Please try again.');
+      console.error('Guest name verification failed:', err);
+      setError('Invalid guest name. Please try again.');
       setRsvpData(null);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Specifically handle the initial invite code entry step
+  // Specifically handle the initial guest name entry step
   if (currentStep === 0) {
     return (
       <div className="min-h-screen bg-[#082e5d] p-8">
@@ -151,16 +151,16 @@ const RSVPPage: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-2xl font-serif text-[#1B365D] text-center">Enter Your Invite Code</h2>
+              <h2 className="text-2xl font-serif text-[#1B365D] text-center">Enter your first and last name:</h2>
               <div className="flex flex-col items-center space-y-4">
                 <input
                   type="text"
-                  placeholder="Invite Code"
+                  placeholder="Name"
                   value={enteredInviteCode}
-                  onChange={(e) => setEnteredInviteCode(e.target.value.toUpperCase().trim())}
+                  onChange={(e) => setEnteredInviteCode(e.target.value)}
                   className="w-64 px-4 py-2 border-2 border-[#1B365D]/20 rounded-lg focus:border-[#ccac6c] focus:outline-none text-center"
                   aria-label="Invite Code"
-                  maxLength={10}
+                  maxLength={30}
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 <button
@@ -168,9 +168,9 @@ const RSVPPage: React.FC = () => {
                   disabled={!enteredInviteCode}
                   className="px-8 py-3 bg-[#ccac6c] text-white rounded-lg hover:bg-[#1B365D] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   type="button"
-                  aria-label="Verify Invite Code"
+                  aria-label="Verify Name"
                 >
-                  Submit Invite Code
+                  Submit Name
                 </button>
               </div>
             </div>
