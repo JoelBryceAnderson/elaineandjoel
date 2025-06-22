@@ -4,7 +4,8 @@ import { RsvpData } from '../types/rsvp';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '/.netlify/functions';
 
 export const fetchRsvpData = async (inviteCode: string): Promise<RsvpData> => {
-  const response = await fetch(`${API_BASE_URL}/rsvp/${inviteCode.trim()}`);
+  const formattedCode = inviteCode.toUpperCase().trim().replace(/\s/g, "")
+  const response = await fetch(`${API_BASE_URL}/rsvp/${formattedCode}`);
   if (!response.ok) {
     throw new Error('Invalid invite code');
   }
