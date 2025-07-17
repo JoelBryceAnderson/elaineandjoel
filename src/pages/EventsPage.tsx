@@ -48,21 +48,6 @@ const EVENTS = [
       lng: -73.9607
     }
   },
-  {
-    name: "Farewell Brunch",
-    date: "November 16, 2025",
-    day: "Sunday",
-    startTime: "11:00 AM",
-    endTime: "2:00 PM",
-    location: "Egg Shop",
-    description: "Join us for a casual farewell brunch.",
-    address: "138 N 8th St, Brooklyn, NY 11249",
-    mapUrl: "https://maps.app.goo.gl/as7cPTF8VV8AV9Xt7",
-    coordinates: {
-      lat: 40.7197,
-      lng: -73.9556
-    }
-  }
 ];
 
 // Group events by date

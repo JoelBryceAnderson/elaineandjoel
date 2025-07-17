@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
               <p className="text-xl text-[#1B365D]">
                 11.15.2025
               </p>
-              <p className="text-[#1B365D] mt-3">Ceremony at 6 p.m.</p>
+              <p className="text-[#1B365D] mt-3">Ceremony at 6:30 p.m.</p>
               <p className="text-[#1B365D]">reception to follow</p>
               <div 
                 className="h-12 bg-contain bg-no-repeat bg-center"
