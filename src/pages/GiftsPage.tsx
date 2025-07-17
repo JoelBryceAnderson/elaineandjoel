@@ -32,12 +32,14 @@ const GiftsPage: React.FC = () => {
             <p className="mb-6">
               If you'd like to help us create lasting memories on our honeymoon, you can contribute to our honeymoon fund.
             </p>
-            <button 
-              onClick={() => setIsModalOpen(true)}
+            <a 
+              href="https://www.honeyfund.com/site/anderson-haas-11-15-2025/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block w-full bg-[#ccac6c] text-white text-center py-4 rounded-lg hover:text-[#1B365D] hover:bg-[#FDF9F3] transition-colors"
             >
-              View Honeymoon Fund QR Code
-            </button>
+              Honeymoon fund
+            </a>
           </div>
         </div>
       </PageTemplate>

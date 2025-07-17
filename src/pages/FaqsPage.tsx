@@ -55,11 +55,11 @@ const FaqsPage: React.FC = () => {
     },
     {
       question: "Are children welcome?",
-      answer: "Maybe!"
+      answer: "No children, please. Adults only."
     },
     {
       question: "What time should I arrive?",
-      answer: "The ceremony will begin promptly at 6:00 PM. We recommend arriving 15-20 minutes early to allow time for seating. The cocktail hour will begin immediately following the ceremony at 6:45 PM."
+      answer: "Doors open at the venue at 6:00 PM. The ceremony will begin promptly at 6:30 PM. We recommend arriving 15-20 minutes prior to the ceremony to allow time for seating. The cocktail hour will begin immediately following the ceremony at 6:45 PM."
     },
     {
       question: "Will the ceremony and reception be indoors or outdoors?",
@@ -75,7 +75,7 @@ const FaqsPage: React.FC = () => {
     },
     {
       question: "Will there be dancing?",
-      answer: "Maybe!"
+      answer: "Yes!"
     }
   ];
 
@@ -83,7 +83,7 @@ const FaqsPage: React.FC = () => {
   <div>
     <PageTemplate
       title="FAQs"
-      subtitle="These answers are currently not true. Do not trust them."
+      subtitle=""
     >          
         <div className="max-w-2xl mx-auto">
           <div className="space-y-1">

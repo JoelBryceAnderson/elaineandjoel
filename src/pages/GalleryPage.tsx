@@ -108,8 +108,8 @@ const GalleryPage: React.FC = () => {
   return (
     <div>
       <PageTemplate
-        title="Our Gallery"
-        subtitle="Some of the most special moments in our relationship throughout the years"
+        title="Gallery"
+        subtitle=""
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pl-12 pr-12">
           {galleryImages.map((image) => (

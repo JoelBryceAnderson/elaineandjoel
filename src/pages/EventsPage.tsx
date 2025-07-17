@@ -34,28 +34,13 @@ const EVENTS = [
     }
   },
   {
-    name: "Wedding Party Photos",
-    date: "November 15, 2025",
-    day: "Saturday",
-    startTime: "3:00 PM",
-    endTime: "4:30 PM",
-    location: "Domino Park",
-    description: "Wedding party photos with Manhattan skyline backdrop.",
-    address: "15 River St, Brooklyn, NY 11249",
-    mapUrl: "https://maps.app.goo.gl/F9fWaYX142uTNLrs6",
-    coordinates: {
-      lat: 40.7147,
-      lng: -73.9670
-    }
-  },
-  {
     name: "Wedding Ceremony & Reception",
     date: "November 15, 2025",
     day: "Saturday",
     startTime: "6:00 PM",
-    endTime: "12:00 PM",
+    endTime: "11:00 PM",
     location: "Aurora Restaurant",
-    description: "Ceremony followed by cocktail hour and reception.",
+    description: "Doors open at 6:00 PM. Ceremony at 6:30 PM followed by cocktail hour and reception. Dress code is cocktail attire.",
     address: "70 Grand Street, Brooklyn, NY",
     mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
     coordinates: {

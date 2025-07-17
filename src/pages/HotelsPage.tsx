@@ -212,7 +212,7 @@ const HotelsPage: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           <h3 className="text-xl font-medium text-[#1B365D] mb-2">
             <a 
-              href={HOTEL.mapUrl}
+              href={HOTEL.websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#ccac6c] transition-colors"

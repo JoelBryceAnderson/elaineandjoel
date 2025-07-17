@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 type PageTemplateProps = {
   title: string;
@@ -59,6 +60,14 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
                    backgroundImage: 'url(/images/embellishment.png)',
                  }} 
                />
+            <Link 
+              to="/" 
+              className="group bg-white hover:bg-[#FDF9F3] transition-all py-8"
+            >
+              <p className="font-serif italic text-center text-[#1B365D] group-hover:text-[#ccac6c] transition-colors">
+                ← Return home ⎯
+              </p>
+            </Link>
              </div>
             </div>
           </div>
