@@ -24,9 +24,9 @@ const EVENTS = [
     day: "Friday",
     startTime: "7:00 PM",
     endTime: "10:00 PM",
-    location: "Other Half Brewing Co",
+    location: "TBD",
     description: "Join us for a welcome drink on the Williamsburg waterfront, a short walk from the hotel!",
-    address: "34 River St, Brooklyn, NY 11249",
+    address: "TBD",
     mapUrl: "https://maps.app.goo.gl/2GzsbGdgK33k5eee7",
     coordinates: {
       lat: 40.7160,
@@ -44,8 +44,8 @@ const EVENTS = [
     address: "70 Grand Street, Brooklyn, NY",
     mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
     coordinates: {
-      lat: 40.7157,
-      lng: -73.9607
+      lat: 40.7158,
+      lng: -73.9647
     }
   },
 ];

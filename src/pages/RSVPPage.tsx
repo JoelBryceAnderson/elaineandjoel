@@ -147,7 +147,7 @@ const RSVPPage: React.FC = () => {
               <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">
                 RSVP
               </h1>
-              <p className="text-[#1B365D]">by October 1, 2025</p>
+              <p className="text-[#1B365D]">by October 15, 2025</p>
             </div>
 
             <div className="space-y-6">

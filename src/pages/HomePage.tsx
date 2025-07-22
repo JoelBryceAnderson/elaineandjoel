@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
             
             <div className="mt-12">
               <p className="text-xl text-[#1B365D]">
-                11.15.2025
+                November 15th, 2025
               </p>
               <p className="text-[#1B365D] mt-3">Ceremony at 6:30 p.m.</p>
               <p className="text-[#1B365D]">reception to follow</p>
