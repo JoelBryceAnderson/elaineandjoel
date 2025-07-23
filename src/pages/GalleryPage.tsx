@@ -158,13 +158,13 @@ const galleryImages: GalleryImage[] = [
     id: 22,
     src: "https://lh3.googleusercontent.com/d/1zgGg14MTxbuUlQEIf3aApFl61le_cdol",
     alt: "1997",
-    title: "Elaine and Grandma Sandra"
+    title: "Elaine & Grandma Sandra"
   },
   {
     id: 23,
     src: "https://lh3.googleusercontent.com/d/1NiUSYWbiQPPd0JCoubJngNBgnpsllJol",
     alt: "1996",
-    title: "Elaine and Grandpa Bill"
+    title: "Elaine & Grandpa Bill"
   },
 ];
 
