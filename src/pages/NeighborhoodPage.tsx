@@ -28,6 +28,7 @@ interface Location {
 interface LocationCategories {
   parks: Location[];
   food: Location[];
+  coffee: Location[];
 }
 
 const locations: LocationCategories = {
@@ -53,10 +54,22 @@ const locations: LocationCategories = {
       }
     }
   ],
+  coffee: [
+    {
+      name: "Oslo Coffee Roasters",
+      description: "Tasty coffee close to the Moxy hotel.",
+      address: "328 Bedford Ave, Brooklyn, NY 11249",
+      mapUrl: "https://maps.app.goo.gl/HjwVoJM65WM5C5Nj6",
+      coordinates: {
+        lat: 40.7134,
+        lng: -73.9622
+      }
+    }
+  ],
   food: [
     {
       name: "L'industrie Pizzeria",
-      description: "Local favorite serving excellent NY-style pizza with creative toppings.",
+      description: "The neighborhood's (and possibly the city's) best pizza. Elaine loves their fig jam & bacon slice.",
       address: "254 S 2nd St, Brooklyn, NY 11211",
       mapUrl: "https://maps.app.goo.gl/RsP7MzGcDGH9ZLRf9",
       coordinates: {
@@ -65,13 +78,33 @@ const locations: LocationCategories = {
       }
     },
     {
+      name: "Court Street Grocers",
+      description: "Joel & Elaine's go-to work lunch: enormous, tasty sandwiches. Joel loves the Turkish Delight.",
+      address: "378 Metropolitan Ave, Brooklyn, NY 11211",
+      mapUrl: "https://maps.app.goo.gl/guwHDZkGb3oa7izP7",
+      coordinates: {
+        lat: 40.7140,
+        lng: -73.9555
+      }
+    },
+    {
       name: "Leon's Bagels",
-      description: "Classic NYC bagel shop offering hand-rolled bagels and various spreads.",
+      description: "Our local bagel shop. Joel & Elaine both love their everything bagel with jalapeño cream cheese.",
       address: "128 Bedford Ave Suite B, Brooklyn, NY 11249",
       mapUrl: "https://maps.app.goo.gl/bhmTLbLbobFyFE2d9",
       coordinates: {
         lat: 40.7196,
         lng: -73.9561
+      }
+    },
+    {
+      name: "Fish Cheeks",
+      description: "Elaine’s favorite Thai restaurant. Joel did cry once because the spice level was too high so beware.",
+      address: "661 Driggs Ave, Brooklyn, NY 11211",
+      mapUrl: "https://maps.app.goo.gl/G669b5saxviW15c89",
+      coordinates: {
+        lat: 40.7146,
+        lng: -73.9588
       }
     }
   ]
@@ -162,7 +195,7 @@ const NeighborhoodPage: React.FC = () => {
         googleMapRef.current = map;
 
         // Create markers for all locations
-        const allLocations = [...locations.parks, ...locations.food];
+        const allLocations = [...locations.parks, ...locations.food, ...locations.coffee];
         markersRef.current = allLocations.map(location => {
           // Create the container for the marker
           const container = document.createElement('div');
@@ -256,6 +289,38 @@ const NeighborhoodPage: React.FC = () => {
                 )}
               </div>
 
+              {/* Food Section */}
+              <div>
+                <div className="flex items-center mb-6">
+                  <Utensils className="w-5 h-5 mr-2 text-[#1B365D]" />
+                  <h2 className="text-xl font-medium text-[#1B365D]">Food & Drinks</h2>
+                </div>
+                {locations.food.map((location) => (
+                  <LocationCard 
+                    key={location.name} 
+                    {...location} 
+                    isSelected={selectedLocation?.name === location.name}
+                    onSelect={() => setSelectedLocation(location)}
+                  />
+                ))}
+              </div>
+
+              {/* Food Section */}
+              <div>
+                <div className="flex items-center mb-6">
+                  <Utensils className="w-5 h-5 mr-2 text-[#1B365D]" />
+                  <h2 className="text-xl font-medium text-[#1B365D]">Coffee</h2>
+                </div>
+                {locations.coffee.map((location) => (
+                  <LocationCard 
+                    key={location.name} 
+                    {...location} 
+                    isSelected={selectedLocation?.name === location.name}
+                    onSelect={() => setSelectedLocation(location)}
+                  />
+                ))}
+              </div>
+
               {/* Parks Section */}
               <div>
                 <div className="flex items-center mb-6">
@@ -272,21 +337,6 @@ const NeighborhoodPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* Food Section */}
-              <div>
-                <div className="flex items-center mb-6">
-                  <Utensils className="w-5 h-5 mr-2 text-[#1B365D]" />
-                  <h2 className="text-xl font-medium text-[#1B365D]">Food & Drinks</h2>
-                </div>
-                {locations.food.map((location) => (
-                  <LocationCard 
-                    key={location.name} 
-                    {...location} 
-                    isSelected={selectedLocation?.name === location.name}
-                    onSelect={() => setSelectedLocation(location)}
-                  />
-                ))}
-              </div>
           </div>
         </div>
       </PageTemplate>

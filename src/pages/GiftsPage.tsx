@@ -15,7 +15,7 @@ const GiftsPage: React.FC = () => {
           <div className="bg-gray-50 p-8 rounded-lg mr-12 ml-12 mt-6">
             <h2 className="text-xl font-semibold mb-4">Support Our Local Community</h2>
             <p className="mb-6">
-              We're passionate about our Williamsburg community and the ongoing efforts to create more green spaces. Consider contributing to the Bushwick Inlet Park project, which is working to transform our neighborhood's waterfront.
+              We're passionate about our Williamsburg community and the ongoing efforts to create more green spaces. Consider contributing to the Bushwick Inlet Park project, which is working to transform our neighborhood's waterfront. Elaine & Joel volunteer at Bushwick Inlet Park for the Weeding Wednesdays and Weekend Planting Extravaganzas, and we'd really appreciate your support!
             </p>
             <a 
               href="https://bushwickinletpark.org/donate/"
@@ -30,7 +30,7 @@ const GiftsPage: React.FC = () => {
           <div className="bg-gray-50 p-8 rounded-lg mr-12 ml-12 mt-8">
             <h2 className="text-xl font-semibold mb-4">Contribute to Our Honeymoon Adventure</h2>
             <p className="mb-6">
-              If you'd like to help us create lasting memories on our honeymoon, you can contribute to our honeymoon fund.
+              If you'd like to help us create lasting memories on our honeymoon, you can contribute to our honeymoon fund. We're heading to Mexico for a long weekend to relax, celebrate, and soak up the start of married life together. Your generosity will help us enjoy a few more tacos, a little more beach time, and maybe a sunset margarita (or two). Thank you for being part of our journey — we can't wait to celebrate with you!
             </p>
             <a 
               href="https://www.honeyfund.com/site/anderson-haas-11-15-2025/"

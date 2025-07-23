@@ -25,7 +25,7 @@ const EVENTS = [
     startTime: "7:00 PM",
     endTime: "10:00 PM",
     location: "TBD",
-    description: "Join us for a welcome drink on the Williamsburg waterfront, a short walk from the hotel!",
+    description: "Join us for a welcome drink! Location TBD.",
     address: "TBD",
     mapUrl: "https://maps.app.goo.gl/2GzsbGdgK33k5eee7",
     coordinates: {
@@ -41,6 +41,21 @@ const EVENTS = [
     endTime: "11:00 PM",
     location: "Aurora Restaurant",
     description: "Doors open at 6:00 PM. Ceremony at 6:30 PM followed by cocktail hour and reception. Dress code is cocktail attire.",
+    address: "70 Grand Street, Brooklyn, NY",
+    mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
+    coordinates: {
+      lat: 40.7158,
+      lng: -73.9647
+    }
+  },
+  {
+    name: "Post-Wedding Pow-wow",
+    date: "November 16, 2025",
+    day: "Sunday",
+    startTime: "2:00 PM",
+    endTime: "4:00 PM",
+    location: "TBD",
+    description: "Join us to say farewell on Sunday! Location TBD.",
     address: "70 Grand Street, Brooklyn, NY",
     mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
     coordinates: {
