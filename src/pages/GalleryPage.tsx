@@ -150,6 +150,12 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 22,
+    src: "https://lh3.googleusercontent.com/d/1BGriWsO1Qa28ZZNH-VuPlXaXVZx4A6G9",
+    alt: "1997",
+    title: "Joel & Dad"
+  },
+  {
+    id: 22,
     src: "https://lh3.googleusercontent.com/d/1zgGg14MTxbuUlQEIf3aApFl61le_cdol",
     alt: "1997",
     title: "Elaine and Grandma Sandra"
