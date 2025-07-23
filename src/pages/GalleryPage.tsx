@@ -18,13 +18,13 @@ interface ImageModalProps {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: "https://lh3.googleusercontent.com/d/1DSg9nxw6O8TW1LZdystYvX6OHwIhBOeI",
+    src: "https://lh3.googleusercontent.com/d/1y29gPpmTXQEBz6ocDLVTOff2bOxO8xpV",
     alt: "2025",
     title: "TWA Hotel photoshoot"
   },
   {
     id: 2,
-    src: "https://lh3.googleusercontent.com/d/1y29gPpmTXQEBz6ocDLVTOff2bOxO8xpV",
+    src: "https://lh3.googleusercontent.com/d/1DSg9nxw6O8TW1LZdystYvX6OHwIhBOeI",
     alt: "2025",
     title: "TWA Hotel photoshoot"
   },
