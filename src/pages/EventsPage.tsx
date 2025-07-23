@@ -49,18 +49,18 @@ const EVENTS = [
     }
   },
   {
-    name: "Post-Wedding Pow-wow",
+    name: "Post-Wedding Pow-Wow",
     date: "November 16, 2025",
     day: "Sunday",
     startTime: "2:00 PM",
     endTime: "4:00 PM",
     location: "TBD",
     description: "Join us to say farewell on Sunday! Location TBD.",
-    address: "70 Grand Street, Brooklyn, NY",
-    mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
+    address: "855 Lorimer St, Brooklyn, NY 11222",
+    mapUrl: "https://maps.app.goo.gl/3PnVzra8XCsoqaS99",
     coordinates: {
-      lat: 40.7158,
-      lng: -73.9647
+      lat: 40.7220,
+      lng: -73.9518
     }
   },
 ];
