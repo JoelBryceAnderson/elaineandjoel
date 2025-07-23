@@ -85,6 +85,10 @@ const FaqsPage: React.FC = () => {
       question: "Open bar?",
       answer: "Yes -- drink up!"
     },
+    {
+      question: "Is it safe to get around at night?",
+      answer: "Williamsburg is generally very safe, especially around the venue. If your hotel is within walking distance, you should have no issues walking home after the wedding. If you’re not familiar with the NYC subway, we recommend skipping it late at night—especially after a few drinks. Rideshares and cabs are easy to find and a safer bet for getting back to your place comfortably. We recommend downloading Uber, Lyft, Revel (a NY-specific rideshare which usually has great discounts for first time users!), or Curb (connects you to NYC taxis). "
+    }
   ];
 
   return (
