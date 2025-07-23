@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Plane, Hotel, Car } from 'lucide-react';
+import { Plane, Hotel, Car, Building2Icon, LucideCarTaxiFront } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
-import { Airport, HOTEL, VENUE, AIRPORTS } from './hotelsTypes';
+import { Airport, HOTEL, VENUE, AIRPORTS, ALT_HOTELS } from './hotelsTypes';
 import PageTemplate from "../components/PageTemplate";
 
 // HotelMap component remains unchanged
@@ -199,9 +199,8 @@ const HotelsPage: React.FC = () => {
   return (
     <PageTemplate
       title="Accommodations"
-      subtitle="Hotels, airports, and useful travel tips"
+      subtitle="We haven’t reserved a hotel block, since we know that — with an NYC wedding — everyone’s preferences, budgets, schedules, and rewards points vary widely. You're welcome to stay for just the weekend or make a longer trip of it! We trust you'll find the accommodations that work best for you, but to help get you started, we've listed a few hotels nearby below."
     >
-
     {/* Hotel Section */}
     <div className="mb-12">
       <div className="text-center mb-12">
@@ -221,21 +220,87 @@ const HotelsPage: React.FC = () => {
             </a>
           </h3>
           <p className="text-gray-600 mb-2">{HOTEL.description}</p>
-          <p className="text-gray-500">{HOTEL.address}</p>
+            <a 
+              href={HOTEL.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-[#ccac6c] transition-colors"
+            >
+              {HOTEL.address}
+            </a>
         </div>
       </div>
 
       <HotelMap />
       
       <div className="text-center mt-4">
-        <p className="text-sm text-gray-500">
-          The hotel is just a {" "}
+        <p className="text-sm italic text-gray-500">
+          The Moxy hotel is just a {" "}
           <span className="font-medium text-[#1B365D]">8-minute walk</span>
           {" "} or {" "}
           <span className="font-medium text-[#1B365D]">4-minute drive</span>
-          {" "} from the venue
+          {" "} from the venue.
         </p>
       </div>
+    </div>
+
+    {/* Alternative Hotels Section */}
+    <div className="mb-8">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center mb-4">
+          <Building2Icon className="w-6 h-6 mr-2 text-[#1B365D]" />
+          <h2 className="text-2xl font-medium text-[#1B365D]">Alternative Hotels in Williamsburg</h2>
+        </div>
+      </div>
+
+      <div className="space-y-8 mr-6 ml-6">
+        {ALT_HOTELS.map((alt_hotel) => (
+        <div className="max-w-2xl mx-auto">
+          <h3 className="text-xl font-medium text-[#1B365D] mb-2">
+            <a 
+              href={alt_hotel.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#ccac6c] transition-colors"
+            >
+              {alt_hotel.name}
+            </a>
+          </h3>
+          <p className="text-gray-600 mb-2">{alt_hotel.description}</p>
+            <a 
+              href={alt_hotel.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-[#ccac6c] transition-colors"
+            >
+              {alt_hotel.address}
+            </a>
+        </div>
+        ))}
+      </div>
+
+    </div>
+
+    {/* Outside Williamsburg Section */}
+    <div className="mb-8">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center mb-4">
+          <LucideCarTaxiFront className="w-6 h-6 mr-2 text-[#1B365D]" />
+          <h2 className="text-2xl font-medium text-[#1B365D]">Staying outside Williamsburg?</h2>
+        </div>
+      </div>
+
+      <div className="space-y-2 mr-6 ml-6">
+        <p className="text-gray-600">
+        If you’re staying in Manhattan, you can cab or take the subway—just give yourself plenty of extra time in case of weekend train delays or traffic.
+        </p>
+        <p className="text-gray-600">
+        If you’re further out in Brooklyn (and not near a subway line), a cab is likely your best bet—but weekend traffic can be unpredictable.        </p>
+        <p className="text-gray-600">
+        To keep things simple, we recommend staying in Williamsburg, Greenpoint, or Bushwick if you can!
+        </p>
+      </div>
+
     </div>
 
     {/* Airports Section */}
@@ -247,7 +312,7 @@ const HotelsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y- 8">
         {AIRPORTS.map((airport) => (
           <div 
             key={airport.code}

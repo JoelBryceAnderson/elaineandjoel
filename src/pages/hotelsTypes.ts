@@ -20,7 +20,7 @@ export interface Airport extends Location {
 
 export const HOTEL: Location = {
   name: "Moxy Williamsburg",
-  description: "Our suggested hotel for out-of-town guests.",
+  description: "Our suggested hotel for out-of-town guests. This is the closest hotel to the venue.",
   address: "247 Metropolitan Ave, Brooklyn, NY 11211",
   mapUrl: "https://maps.app.goo.gl/jRnnjdkJrXdGftMv5",
   websiteUrl: "https://www.marriott.com/en-us/hotels/nycxb-moxy-brooklyn-williamsburg/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
@@ -46,7 +46,7 @@ export const AIRPORTS: Airport[] = [
     {
     name: "LaGuardia Airport",
     code: "LGA",
-    description: "Domestic airport with flights from across the United States.\n\nWhile any NYC area airport will work, we strongly suggest LaGuardia for its proximity to Williamsburg.",
+    description: "Domestic airport with flights from across the United States.\nWhile any NYC area airport will work, we strongly suggest LaGuardia for its proximity to Williamsburg.",
     address: "Queens, NY 11371",
     mapUrl: "https://maps.app.goo.gl/YnWztQErTnfZ7Czo8",
     websiteUrl: "",
@@ -57,6 +57,42 @@ export const AIRPORTS: Airport[] = [
     travelInfo: {
       drivingTime: "30-45 minutes",
       distance: "7.8 miles"
+    }
+  },
+];
+
+export const ALT_HOTELS: Location[] = [
+    {
+    name: "Coda Hotel",
+    description: "Slightly more upscale hotel just off of McCarren Park. A bit farther from the venue.",
+    address: "160 N 12th St, Brooklyn, NY 11249",
+    mapUrl: "https://maps.app.goo.gl/ZsfdJXKUY6KD3XDFA",
+    websiteUrl: "https://www.codahotels.com",
+    coordinates: {
+      lat: 40.7212,
+      lng: -73.9555
+    }
+  },
+    {
+    name: "The William Vale",
+    description: "The high-end option. Beautiful city views, still within walking distance of (or a short cab ride to) the venue.",
+    address: "111 N 12th St, Brooklyn, NY 11249",
+    mapUrl: "https://maps.app.goo.gl/yX19Aqm3BhLfj8QB8",
+    websiteUrl: "https://www.thewilliamvale.com",
+    coordinates: {
+      lat: 40.7221,
+      lng: -73.9565
+    }
+  },
+    {
+    name: "The Penny",
+    description: "Another affordable option -- not withing walking distance, but a short cab ride away.",
+    address: "288 N 8th St, Brooklyn, NY 11211",
+    mapUrl: "https://maps.app.goo.gl/15LxRKmoPMYxZ7Mz5",
+    websiteUrl: "https://www.penny-hotel.com",
+    coordinates: {
+      lat: 40.7221,
+      lng: -73.9565
     }
   },
 ];
