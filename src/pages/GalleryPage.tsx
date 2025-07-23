@@ -102,66 +102,72 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 14,
+    src: "https://lh3.googleusercontent.com/d/1xv1eju6-QZ3MxRAnAkUkDybbFx4Ez3T7",
+    alt: "2022",
+    title: "Lakeside Sailing"
+  },
+  {
+    id: 15,
     src: "https://lh3.googleusercontent.com/d/1DzROWFmd-8y0gkbVg_4TPKXnvQxNKrSD",
     alt: "2021",
     title: "NYC Together!"
   },
   {
-    id: 15,
+    id: 16,
     src: "https://lh3.googleusercontent.com/d/1n5srCEgfWHcpf6f1reX4yiM6D8Zjc4Ba",
     alt: "2020",
     title: "Our cat Ray"
   },
   {
-    id: 16,
+    id: 17,
     src: "https://lh3.googleusercontent.com/d/192K3qVFbQG-Ce3Ba5CEN65WwoMVsxLAL",
     alt: "2020",
     title: "COVID Christmas"
   },
   {
-    id: 17,
+    id: 18,
     src: "https://lh3.googleusercontent.com/d/1-703zXx_52CdvZnePY0zKaR-n3EA_RUM",
     alt: "2019",
     title: "NYC Together!"
   },
   {
-    id: 18,
+    id: 19,
     src: "https://lh3.googleusercontent.com/d/1sqAK5fIPdl-BaIB_86c0juI2gmjfWpi1",
     alt: "2018",
     title: "Lakeside, OH"
   },
   {
-    id: 19,
+    id: 20,
     src: "https://lh3.googleusercontent.com/d/13cJNr_30VWBivaGsQ7t-3FySXRi6UCvr",
     alt: "2017",
     title: "Joel moves to NYC"
   },
   {
-    id: 20,
+    id: 21,
     src: "https://lh3.googleusercontent.com/d/1gqHHdYJ_K_PjRP7TamE9Y18KAyEK-AKv",
     alt: "2015",
     title: "College date night"
   },
   {
-    id: 21,
+    id: 22,
     src: "https://lh3.googleusercontent.com/d/1mse9vHfGiaOqlQjTOJoJO0wf-Ps3URJ7",
     alt: "2015",
     title: "Sorority Date Night"
   },
   {
-    id: 22,
+    id: 23,
     src: "https://lh3.googleusercontent.com/d/1BGriWsO1Qa28ZZNH-VuPlXaXVZx4A6G9",
     alt: "1997",
     title: "Joel & Dad"
   },
   {
-    id: 22,
+    id: 24,
     src: "https://lh3.googleusercontent.com/d/1zgGg14MTxbuUlQEIf3aApFl61le_cdol",
     alt: "1997",
     title: "Elaine & Grandma Sandra"
   },
   {
-    id: 23,
+    id: 25,
     src: "https://lh3.googleusercontent.com/d/1NiUSYWbiQPPd0JCoubJngNBgnpsllJol",
     alt: "1996",
     title: "Elaine & Grandpa Bill"
