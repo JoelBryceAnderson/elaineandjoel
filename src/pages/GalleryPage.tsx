@@ -20,25 +20,25 @@ const galleryImages: GalleryImage[] = [
     id: 1,
     src: "https://lh3.googleusercontent.com/d/1DSg9nxw6O8TW1LZdystYvX6OHwIhBOeI",
     alt: "2025",
-    title: "Engagement photos!"
+    title: "TWA Hotel photoshoot"
   },
   {
     id: 2,
     src: "https://lh3.googleusercontent.com/d/1y29gPpmTXQEBz6ocDLVTOff2bOxO8xpV",
     alt: "2025",
-    title: "Engagement photos!"
+    title: "TWA Hotel photoshoot"
   },
   {
     id: 3,
     src: "https://lh3.googleusercontent.com/d/1eMZrfqwpB3cU0lRnmcsSt-TAv071r76A",
     alt: "2025",
-    title: "Engagement photos!"
+    title: "TWA Hotel photoshoot"
   },
   {
     id: 4,
     src: "https://lh3.googleusercontent.com/d/1q-pnLsbY1fNgNZPo-ccnXXCBShVJkZL3",
     alt: "2025",
-    title: "Engagement photos!"
+    title: "TWA Hotel photoshoot"
   },
   {
     id: 5,
@@ -48,35 +48,88 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 6,
+    src: "https://lh3.googleusercontent.com/d/1vnClZzBdxPv3tPrLiCHQmK_NqPXJYemw",
+    alt: "2024",
+    title: "Knicks game!"
+  },
+  {
+    id: 7,
+    src: "https://lh3.googleusercontent.com/d/1tEUs3OUzXRLhjY3ZUDDLkBS7PE_bYtwh",
+    alt: "2023",
+    title: "Engaged!"
+  },
+  {
+    id: 8,
     src: "https://lh3.googleusercontent.com/d/1Uhk2bcO95euo0yiUu8fPirwL8LUWGJK7",
     alt: "2023",
     title: "Engaged!"
   },
   {
-    id: 7,
+    id: 9,
+    src: "https://lh3.googleusercontent.com/d/1zfHBeBc1t6gylxJNiOUAsuaWVx4Am43B",
+    alt: "2023",
+    title: "Amar & Tatiana's Wedding"
+  },
+  {
+    id: 10,
+    src: "https://lh3.googleusercontent.com/d/1Ed5PALq2GLWewUQfpYAYIpclX2up61SS/",
+    alt: "2022",
+    title: "Jamaica"
+  },
+  {
+    id: 10,
+    src: "https://lh3.googleusercontent.com/d/1f-W_60CVevqHw89ZczphaujFnkr8e6RT/",
+    alt: "2022",
+    title: "Snow day"
+  },
+  {
+    id: 11,
+    src: "https://lh3.googleusercontent.com/d/1DzROWFmd-8y0gkbVg_4TPKXnvQxNKrSD",
+    alt: "2021",
+    title: "NYC Together!"
+  },
+  {
+    id: 12,
+    src: "https://lh3.googleusercontent.com/d/1n5srCEgfWHcpf6f1reX4yiM6D8Zjc4Ba",
+    alt: "2020",
+    title: "Our cat Ray"
+  },
+  {
+    id: 13,
+    src: "https://lh3.googleusercontent.com/d/192K3qVFbQG-Ce3Ba5CEN65WwoMVsxLAL",
+    alt: "2020",
+    title: "COVID Christmas"
+  },
+  {
+    id: 14,
     src: "https://lh3.googleusercontent.com/d/1-703zXx_52CdvZnePY0zKaR-n3EA_RUM",
     alt: "2019",
     title: "NYC Together!"
   },
   {
-    id: 8,
+    id: 15,
     src: "https://lh3.googleusercontent.com/d/1sqAK5fIPdl-BaIB_86c0juI2gmjfWpi1",
     alt: "2018",
     title: "Lakeside, OH"
   },
   {
-    id: 9,
+    id: 16,
     src: "https://lh3.googleusercontent.com/d/13cJNr_30VWBivaGsQ7t-3FySXRi6UCvr",
     alt: "2017",
     title: "Joel moves to NYC"
   },
   {
-    id: 10,
+    id: 17,
     src: "https://lh3.googleusercontent.com/d/1gqHHdYJ_K_PjRP7TamE9Y18KAyEK-AKv",
     alt: "2015",
-    title: "Sorority date night"
+    title: "College date night"
   },
-
+  {
+    id: 18,
+    src: "https://lh3.googleusercontent.com/d/1mse9vHfGiaOqlQjTOJoJO0wf-Ps3URJ7",
+    alt: "2015",
+    title: "Sorority Date Night"
+  }
 ];
 
 const ImageModal: React.FC<ImageModalProps> = ({ image, onClose }) => {
