@@ -72,64 +72,76 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 10,
-    src: "https://lh3.googleusercontent.com/d/1Ed5PALq2GLWewUQfpYAYIpclX2up61SS/",
+    src: "https://lh3.googleusercontent.com/d/1cJxEg_RL0aoglyueaRCGLEJsnxez8u21",
     alt: "2022",
     title: "Jamaica"
   },
   {
-    id: 10,
-    src: "https://lh3.googleusercontent.com/d/1f-W_60CVevqHw89ZczphaujFnkr8e6RT/",
+    id: 11,
+    src: "https://lh3.googleusercontent.com/d/1CB5HaT7NUBkuV533mAGv3EUJtkEOLd3e",
     alt: "2022",
     title: "Snow day"
   },
   {
-    id: 11,
+    id: 12,
     src: "https://lh3.googleusercontent.com/d/1DzROWFmd-8y0gkbVg_4TPKXnvQxNKrSD",
     alt: "2021",
     title: "NYC Together!"
   },
   {
-    id: 12,
+    id: 13,
     src: "https://lh3.googleusercontent.com/d/1n5srCEgfWHcpf6f1reX4yiM6D8Zjc4Ba",
     alt: "2020",
     title: "Our cat Ray"
   },
   {
-    id: 13,
+    id: 14,
     src: "https://lh3.googleusercontent.com/d/192K3qVFbQG-Ce3Ba5CEN65WwoMVsxLAL",
     alt: "2020",
     title: "COVID Christmas"
   },
   {
-    id: 14,
+    id: 15,
     src: "https://lh3.googleusercontent.com/d/1-703zXx_52CdvZnePY0zKaR-n3EA_RUM",
     alt: "2019",
     title: "NYC Together!"
   },
   {
-    id: 15,
+    id: 16,
     src: "https://lh3.googleusercontent.com/d/1sqAK5fIPdl-BaIB_86c0juI2gmjfWpi1",
     alt: "2018",
     title: "Lakeside, OH"
   },
   {
-    id: 16,
+    id: 17,
     src: "https://lh3.googleusercontent.com/d/13cJNr_30VWBivaGsQ7t-3FySXRi6UCvr",
     alt: "2017",
     title: "Joel moves to NYC"
   },
   {
-    id: 17,
+    id: 18,
     src: "https://lh3.googleusercontent.com/d/1gqHHdYJ_K_PjRP7TamE9Y18KAyEK-AKv",
     alt: "2015",
     title: "College date night"
   },
   {
-    id: 18,
+    id: 19,
     src: "https://lh3.googleusercontent.com/d/1mse9vHfGiaOqlQjTOJoJO0wf-Ps3URJ7",
     alt: "2015",
     title: "Sorority Date Night"
-  }
+  },
+  {
+    id: 20,
+    src: "https://lh3.googleusercontent.com/d/1zgGg14MTxbuUlQEIf3aApFl61le_cdol",
+    alt: "1997",
+    title: "Elaine and Grandma Sandra"
+  },
+  {
+    id: 21,
+    src: "https://lh3.googleusercontent.com/d/1NiUSYWbiQPPd0JCoubJngNBgnpsllJol",
+    alt: "1996",
+    title: "Elaine and Grandpa Bill"
+  },
 ];
 
 const ImageModal: React.FC<ImageModalProps> = ({ image, onClose }) => {
