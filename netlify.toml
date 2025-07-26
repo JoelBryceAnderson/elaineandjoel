@@ -1,11 +1,17 @@
+# This is the build command for your site
 [build]
-  command = "npm run build"
-  functions = "netlify/functions"
-  publish = "build"
-
-[dev]
+  command = "npm run build"  # Or "yarn build"
+  publish = "build"          # Or "dist", check your project's build output folder
   functions = "netlify/functions"
 
+# This rule ensures that your serverless functions are accessible
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# This is the "catch-all" rule for your Single-Page App.
+# It MUST come AFTER the functions redirect rule.
 [[redirects]]
   from = "/*"
   to = "/index.html"

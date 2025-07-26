@@ -6,9 +6,7 @@ import { RsvpData, RsvpResponse } from '../../src/types/rsvp';
 const credentials = {
   client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
   // This line is now fixed to correctly handle newlines in the private key
-  private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/
-/g, '
-')
+  private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY
 };
 
 const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
