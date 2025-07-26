@@ -86,7 +86,7 @@ export const ALT_HOTELS: Location[] = [
   },
     {
     name: "The Penny",
-    description: "Another affordable option -- not withing walking distance, but a short cab ride away.",
+    description: "Another affordable option -- not within walking distance, but a short cab ride away.",
     address: "288 N 8th St, Brooklyn, NY 11211",
     mapUrl: "https://maps.app.goo.gl/15LxRKmoPMYxZ7Mz5",
     websiteUrl: "https://www.penny-hotel.com",
