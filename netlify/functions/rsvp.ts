@@ -1,11 +1,14 @@
 import { Handler } from '@netlify/functions';
 import { google } from 'googleapis';
-import { RsvpData } from '../../src/types/rsvp';
+import { RsvpData, RsvpResponse } from '../../src/types/rsvp';
 
 // Configure Google Sheets authentication
 const credentials = {
   client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
-  private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n')
+  // This line is now fixed to correctly handle newlines in the private key
+  private_key: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/
+/g, '
+')
 };
 
 const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
@@ -18,175 +21,147 @@ async function getGoogleSheetsClient() {
   return google.sheets({ version: 'v4', auth });
 }
 
-async function findRsvpByInviteCode(sheets: any, inviteCode: string): Promise<RsvpData | null> {
+// Finds a guest's party by their first and last name
+async function findPartyByGuestName(sheets: any, firstName: string, lastName: string): Promise<RsvpData | null> {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'Invites!A:F' // Adjust range as needed
+      // Assumes columns: PartyID, FirstName, LastName, AllowedEvents, AdditionalGuests
+      range: 'Invites!A:E' 
     });
 
     const rows = response.data.values || [];
-    const headers = rows[0];
-    const inviteCodeIndex = headers.indexOf('InviteCode');
-    
-    const matchingRowIndex = rows.findIndex((row: string[]) => row[inviteCodeIndex] === inviteCode);
-    
-    if (matchingRowIndex === -1) return null;
+    if (rows.length === 0) return null;
 
-    // Map row to RsvpData structure
+    const headers = rows[0];
+    const firstNameIndex = headers.indexOf('FirstName');
+    const lastNameIndex = headers.indexOf('LastName');
+    const partyIdIndex = headers.indexOf('PartyID');
+
+    // Find the row for the guest who is searching
+    const guestRow = rows.find((row: string[]) => 
+      row[firstNameIndex]?.trim().toLowerCase() === firstName.trim().toLowerCase() &&
+      row[lastNameIndex]?.trim().toLowerCase() === lastName.trim().toLowerCase()
+    );
+
+    if (!guestRow) return null;
+
+    const partyId = guestRow[partyIdIndex];
+    // Find all guests belonging to the same party
+    const partyRows = rows.filter((row: string[]) => row[partyIdIndex] === partyId);
+
+    if (partyRows.length === 0) return null;
+
+    const firstRowOfParty = partyRows[0];
+    const allowedEventsIndex = headers.indexOf('AllowedEvents');
+    const additionalGuestsIndex = headers.indexOf('AdditionalGuests');
+
+    // Construct the party data object
     return {
-      inviteCode,
+      partyId: partyId,
       guestGroup: {
-        maxGuests: parseInt(rows[matchingRowIndex][headers.indexOf('MaxGuests')] || '2'),
-        allowedEvents: rows[matchingRowIndex][headers.indexOf('AllowedEvents')]?.split(',') || [],
-        primaryContact: rows[matchingRowIndex][headers.indexOf('PrimaryContact')] || ''
+        guests: partyRows.map(row => ({
+          firstName: row[firstNameIndex],
+          lastName: row[lastNameIndex]
+        })),
+        allowedEvents: firstRowOfParty[allowedEventsIndex]?.split(',').map((s: string) => s.trim()) || [],
+        additionalGuests: parseInt(firstRowOfParty[additionalGuestsIndex] || '0'),
       }
     };
   } catch (error) {
-    console.error('Error fetching RSVP data:', error);
+    console.error('Error fetching RSVP data by guest name:', error);
     return null;
   }
 }
 
-async function updateRsvpResponse(sheets: any, inviteCode: string, rsvpResponse: RsvpData['response']) {
+// Appends the RSVP responses to the 'Responses' sheet
+async function updateRsvpResponse(sheets: any, partyId: string, rsvpResponse: RsvpResponse) {
   try {
-    const sheetsResponse = await sheets.spreadsheets.values.append({
+    if (!rsvpResponse || !rsvpResponse.guests) {
+      throw new Error("Invalid RSVP response format");
+    }
+
+    // Create a row for each guest in the response
+    const values = rsvpResponse.guests.map(guest => [
+      partyId,
+      `${guest.firstName} ${guest.lastName}`,
+      guest.attending ? 'Yes' : 'No',
+      guest.dietaryRestrictions || '',
+      rsvpResponse.songRequest || '',
+      new Date().toISOString()
+    ]);
+
+    await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Responses!A:G', // Adjust range as needed
+      // Assumes columns: PartyID, GuestName, Attending, DietaryRestrictions, SongRequest, SubmissionDate
+      range: 'Responses!A:F', 
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       requestBody: {
-        values: [[
-          inviteCode,
-          rsvpResponse?.attending ? 'Yes' : 'No',
-          rsvpResponse?.guestCount || 0,
-          rsvpResponse?.guestNames?.join(', ') || '',
-          rsvpResponse?.dietaryRestrictions?.join(', ') || '',
-          rsvpResponse?.songRequest || '',
-          new Date().toISOString()
-        ]]
+        values: values
       }
     });
 
-    return sheetsResponse.data;
   } catch (error) {
     console.error('Error submitting RSVP:', error);
     throw error;
   }
 }
 
-export const handler: Handler = async (event, context) => {
-  // CORS headers
+export const handler: Handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   };
 
-  // Extract invite code from the full path
-  const pathParts = event.path.split('/');
-  const inviteCode = pathParts[pathParts.length - 1];
-
-  // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers,
-      body: 'Preflight request successful'
-    };
+    return { statusCode: 200, headers, body: 'Success' };
   }
 
-  // Validate required environment variables
   if (!process.env.GOOGLE_SHEETS_CLIENT_EMAIL || !process.env.GOOGLE_SHEETS_PRIVATE_KEY || !spreadsheetId) {
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: 'Google Sheets configuration is missing' })
-    };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Google Sheets configuration is missing' }) };
   }
 
   try {
     const sheets = await getGoogleSheetsClient();
 
-    // GET request to fetch RSVP data
+    // GET request to fetch party data by name
     if (event.httpMethod === 'GET') {
-      if (!inviteCode) {
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({ error: 'Invalid invite code' })
-        };
+      const firstName = event.queryStringParameters?.firstName;
+      const lastName = event.queryStringParameters?.lastName;
+
+      if (!firstName || !lastName) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: 'First and last name are required' }) };
       }
 
-      const rsvpData = await findRsvpByInviteCode(sheets, inviteCode);
+      const rsvpData = await findPartyByGuestName(sheets, firstName, lastName);
 
       if (!rsvpData) {
-        return {
-          statusCode: 404,
-          headers,
-          body: JSON.stringify({ error: 'Invite code not found' })
-        };
+        return { statusCode: 404, headers, body: JSON.stringify({ error: 'Guest not found' }) };
       }
 
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify(rsvpData)
-      };
+      return { statusCode: 200, headers, body: JSON.stringify(rsvpData) };
     }
 
-    // POST request to submit RSVP
+    // POST request to submit the RSVP
     if (event.httpMethod === 'POST') {
       const body = JSON.parse(event.body || '{}');
-      const { inviteCode, response } = body;
+      const { partyId, response } = body;
 
-      if (!inviteCode || !response) {
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({ error: 'Invalid RSVP submission' })
-        };
+      if (!partyId || !response) {
+        return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid RSVP submission' }) };
       }
 
-      // Verify invite code exists first
-      const existingRsvp = await findRsvpByInviteCode(sheets, inviteCode);
-      
-      if (!existingRsvp) {
-        return {
-          statusCode: 404,
-          headers,
-          body: JSON.stringify({ error: 'Invalid invite code' })
-        };
-      }
+      await updateRsvpResponse(sheets, partyId, response);
 
-      // Submit response to Google Sheets
-      await updateRsvpResponse(sheets, inviteCode, response);
-
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({
-          ...existingRsvp,
-          response: {
-            ...response,
-            submittedAt: new Date().toISOString()
-          }
-        })
-      };
+      return { statusCode: 200, headers, body: JSON.stringify({ message: 'RSVP submitted successfully' }) };
     }
 
-    // Method not allowed
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
+    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) };
   } catch (error) {
     console.error('Unexpected error:', error);
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: 'Internal server error', details: (error as Error).message })
-    };
+    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Internal server error', details: errorMessage }) };
   }
 };

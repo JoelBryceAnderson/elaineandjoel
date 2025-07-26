@@ -1,18 +1,31 @@
+// A single guest, either from the invite list or added as a +1
+export interface Guest {
+  firstName: string;
+  lastName: string;
+}
+
+// The response for a single guest, including their RSVP status and details
+export interface GuestResponse extends Guest {
+  attending: boolean;
+  dietaryRestrictions?: string;
+}
+
+// The main data structure for a party, fetched from the backend
 export interface RsvpData {
-  inviteCode: string;
+  partyId: string;
   guestGroup: {
-    maxGuests: number;
+    guests: Guest[];
     allowedEvents: string[];
-    primaryContact: string;
+    additionalGuests: number; // Renamed from maxGuests
   };
-  response?: {
-    attending: boolean;
-    guestCount: number;
-    guestNames: string[];
-    dietaryRestrictions: string[];
-    songRequest: string;
-    submittedAt: string;
-  };
+  response?: RsvpResponse; // Optional, if they've already responded
+}
+
+// The complete RSVP submission from the frontend
+export interface RsvpResponse {
+  guests: GuestResponse[];
+  songRequest?: string;
+  submittedAt: string;
 }
 
 export interface Event {
