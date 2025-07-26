@@ -233,7 +233,7 @@ const RSVPPage: React.FC = () => {
           <div className="text-center space-y-8 mb-16">
             <h2 className="text-[#1B365D] tracking-wide text-sm">PLEASE</h2>
             <h1 className="text-4xl font-serif tracking-wide text-[#1B365D]">RSVP</h1>
-            <p className="text-[#1B365D]">by October 1, 2025</p>
+            <p className="text-[#1B365D]">by October 15, 2025</p>
           </div>
           <div className="min-h-[300px] flex items-center justify-center">
             <div className="w-full">
