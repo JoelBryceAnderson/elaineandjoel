@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, PartyPopper, UserPlus, Send } from 'lucide-react';
 import { fetchRsvpData, submitRsvp } from '../utils/api';
 import { RsvpData, GuestResponse } from '../types/rsvp';
@@ -64,7 +65,7 @@ const RSVPPage: React.FC = () => {
     setError(null);
     try {
       const finalResponse = {
-        guests: guestResponses.filter(g => g.attending), // Only submit those who are attending
+        guests: guestResponses,
         songRequest,
         submittedAt: new Date().toISOString(),
       };
@@ -228,6 +229,9 @@ const RSVPPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#082e5d] p-8">
       <div className="max-w-2xl mx-auto px-8 py-24 relative">
+        <Link to="/" className="absolute top-6 left-6 text-[#1B365D] bg-white/70 hover:bg-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 ease-in-out z-20 text-sm font-sans">
+          &larr; Return to Home
+        </Link>
         <div className="absolute inset-0 bg-white/95 rounded-xl shadow-lg" />
         <div className="relative z-10">
           <div className="text-center space-y-8 mb-16">
