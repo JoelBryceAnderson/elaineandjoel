@@ -74,8 +74,8 @@ const FaqsPage: React.FC = () => {
       answer: "The reception dinner will feature family-style Italian fare. Please include any dietary restrictions when submitting your RSVP online!"
     },
     {
-      question: "Are there dietary restrictions I should know about?",
-      answer: "The menu will include vegetarian options. If you have specific dietary restrictions or allergies, please note them in your RSVP response and we will do our best to accommodate you."
+      question: "Will the venue accommodate dietary restrictions?",
+      answer: "The menu will include vegetarian and gluten-free options. If you have specific dietary restrictions or allergies, please note them in your RSVP response and we will do our best to accommodate you."
     },
     {
       question: "Will there be dancing?",

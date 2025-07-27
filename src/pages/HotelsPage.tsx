@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Plane, Hotel, Car, Building2Icon, LucideCarTaxiFront } from 'lucide-react';
+import { Plane, Hotel, Car, Building2Icon, LucideCarTaxiFront, Footprints } from 'lucide-react';
 import { loader, mapId } from '../utils/mapUtils';
 import { Airport, HOTEL, VENUE, AIRPORTS, ALT_HOTELS } from './hotelsTypes';
 import PageTemplate from "../components/PageTemplate";
@@ -228,20 +228,21 @@ const HotelsPage: React.FC = () => {
             >
               {HOTEL.address}
             </a>
+            <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 mt-2">
+                <span className="flex items-center">
+                  <Footprints className="w-4 h-4 mr-1" />
+                  {HOTEL.walkingTime}
+                </span>
+                <span>•</span>
+                <span className="flex items-center">
+                  <Car className="w-4 h-4 mr-1" />
+                  {HOTEL.drivingTime}
+                </span>
+              </div>
         </div>
       </div>
 
-      <HotelMap />
-      
-      <div className="text-center mt-4">
-        <p className="text-sm italic text-gray-500">
-          The Moxy hotel is just a {" "}
-          <span className="font-medium text-[#1B365D]">8-minute walk</span>
-          {" "} or {" "}
-          <span className="font-medium text-[#1B365D]">4-minute drive</span>
-          {" "} from the venue.
-        </p>
-      </div>
+      <HotelMap />      
     </div>
 
     {/* Alternative Hotels Section */}
@@ -275,6 +276,17 @@ const HotelsPage: React.FC = () => {
             >
               {alt_hotel.address}
             </a>
+            <div className="flex space-x-4 text-sm text-gray-500 mt-2">
+                <span className="flex">
+                  <Footprints className="w-4 h-4 mr-1" />
+                  {alt_hotel.walkingTime}
+                </span>
+                <span>•</span>
+                <span className="flex">
+                  <Car className="w-4 h-4 mr-1" />
+                  {alt_hotel.drivingTime}
+                </span>
+              </div>
         </div>
         ))}
       </div>
@@ -312,7 +324,7 @@ const HotelsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="space-y- 8">
+      <div className="space-y-8">
         {AIRPORTS.map((airport) => (
           <div 
             key={airport.code}
@@ -337,7 +349,7 @@ const HotelsPage: React.FC = () => {
               <div className="flex items-center space-x-4 text-sm text-gray-500">
                 <span className="flex items-center">
                   <Car className="w-4 h-4 mr-1" />
-                  {airport.travelInfo.drivingTime}
+                  {airport.drivingTime}
                 </span>
                 <span>•</span>
                 <span>{airport.travelInfo.distance}</span>

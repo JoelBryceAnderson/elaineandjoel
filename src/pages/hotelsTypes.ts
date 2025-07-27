@@ -4,6 +4,8 @@ export interface Location {
   address: string;
   mapUrl: string;
   websiteUrl: string;
+  walkingTime: string;
+  drivingTime: string,
   coordinates: {
     lat: number;
     lng: number;
@@ -13,7 +15,6 @@ export interface Location {
 export interface Airport extends Location {
   code: string;
   travelInfo: {
-    drivingTime: string;
     distance: string;
   };
 }
@@ -24,6 +25,8 @@ export const HOTEL: Location = {
   address: "247 Metropolitan Ave, Brooklyn, NY 11211",
   mapUrl: "https://maps.app.goo.gl/jRnnjdkJrXdGftMv5",
   websiteUrl: "https://www.marriott.com/en-us/hotels/nycxb-moxy-brooklyn-williamsburg/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
+  walkingTime: "8 minutes",
+  drivingTime: "4 minutes",
   coordinates: {
     lat: 40.7117,
     lng: -73.9629
@@ -36,6 +39,8 @@ export const VENUE: Location = {
   address: "70 Grand Street, Brooklyn, NY",
   mapUrl: "https://maps.app.goo.gl/XgpetCEfV694dqG78",
   websiteUrl: "https://www.aurorabk.com",
+  walkingTime: "0",
+  drivingTime: "0",
   coordinates: {
     lat: 40.7157,
     lng: -73.9667
@@ -54,8 +59,9 @@ export const AIRPORTS: Airport[] = [
       lat: 40.7769,
       lng: -73.8740
     },
+    drivingTime: "30-45 minutes",
+    walkingTime: "lol dont walk",
     travelInfo: {
-      drivingTime: "30-45 minutes",
       distance: "7.8 miles"
     }
   },
@@ -68,6 +74,8 @@ export const ALT_HOTELS: Location[] = [
     address: "160 N 12th St, Brooklyn, NY 11249",
     mapUrl: "https://maps.app.goo.gl/ZsfdJXKUY6KD3XDFA",
     websiteUrl: "https://www.codahotels.com",
+    walkingTime: "16 minutes",
+    drivingTime: "6 minutes",
     coordinates: {
       lat: 40.7212,
       lng: -73.9555
@@ -79,6 +87,8 @@ export const ALT_HOTELS: Location[] = [
     address: "111 N 12th St, Brooklyn, NY 11249",
     mapUrl: "https://maps.app.goo.gl/yX19Aqm3BhLfj8QB8",
     websiteUrl: "https://www.thewilliamvale.com",
+    walkingTime: "15 minutes",
+    drivingTime: "6 minutes",
     coordinates: {
       lat: 40.7221,
       lng: -73.9565
@@ -90,6 +100,8 @@ export const ALT_HOTELS: Location[] = [
     address: "288 N 8th St, Brooklyn, NY 11211",
     mapUrl: "https://maps.app.goo.gl/15LxRKmoPMYxZ7Mz5",
     websiteUrl: "https://www.penny-hotel.com",
+    walkingTime: "18 minutes",
+    drivingTime: "6 minutes",
     coordinates: {
       lat: 40.7221,
       lng: -73.9565
