@@ -72,6 +72,47 @@ async function findPartyByGuestName(sheets: any, firstName: string, lastName: st
   }
 }
 
+// Appends the incorrect name submission to the 'Incorrect Names' sheet
+async function logIncorrectName(sheets: any, firstName: string, lastName: string) {
+  try {
+    const values = [[firstName, lastName, new Date().toISOString()]];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      // Assumes columns: FirstName, LastName, SubmissionDate
+      range: 'Incorrect Names!A:C', 
+      valueInputOption: 'RAW',
+      insertDataOption: 'INSERT_ROWS',
+      requestBody: {
+        values: values
+      }
+    });
+  } catch (error) {
+    // If the sheet doesn't exist, create it and retry
+    if (error.code === 400 && error.errors[0].message.includes("Unable to parse range")) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+          requests: [{ addSheet: { properties: { title: "Incorrect Names" } } }]
+        }
+      });
+      // Add headers to the new sheet
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: 'Incorrect Names!A1',
+        valueInputOption: 'RAW',
+        requestBody: {
+          values: [['FirstName', 'LastName', 'SubmissionDate']]
+        }
+      });
+      await logIncorrectName(sheets, firstName, lastName); // Retry the original operation
+    } else {
+      console.error('Error logging incorrect name:', error);
+      // We don't want to block the user response, so we'll just log the error
+    }
+  }
+}
+
 // Appends the RSVP responses to the 'Responses' sheet
 async function updateRsvpResponse(sheets: any, partyId: string, rsvpResponse: RsvpResponse) {
   try {
@@ -136,6 +177,8 @@ export const handler: Handler = async (event) => {
       const rsvpData = await findPartyByGuestName(sheets, firstName, lastName);
 
       if (!rsvpData) {
+        // Log the incorrect name attempt
+        await logIncorrectName(sheets, firstName, lastName);
         return { statusCode: 404, headers, body: JSON.stringify({ error: 'Guest not found' }) };
       }
 
