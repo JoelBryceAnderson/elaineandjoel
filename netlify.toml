@@ -5,6 +5,13 @@
   functions = "netlify/functions"
 
 # This rule ensures that your serverless functions are accessible
+
+# Proxy to seating chart app
+[[redirects]]
+  from = "/seating/*"
+  to = "https://seatingchartsimulator.netlify.app/:splat"
+  status = 200
+
 [[redirects]]
   from = "/.netlify/functions/*"
   to = "/.netlify/functions/:splat"
