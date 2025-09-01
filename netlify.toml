@@ -4,19 +4,16 @@
   publish = "build"
   functions = "netlify/functions"
 
-# Rule 1: Enforce a trailing slash on /seating to ensure relative paths work.
-# This MUST come before the proxy rule.
-[[redirects]]
-  from = "/seating"
-  to = "/seating/"
-  status = 301
-  force = true
-
-# Rule 2: Proxy all requests from /seating/ to the seating chart app.
+# Redirect /seating to the external seating chart app
 [[redirects]]
   from = "/seating/*"
   to = "https://seatingchartsimulator.netlify.app/:splat"
-  status = 200
+  status = 302 # Found - temporary redirect
+
+[[redirects]]
+  from = "/seating"
+  to = "https://seatingchartsimulator.netlify.app"
+  status = 302 # Found - temporary redirect
 
 # This rule ensures that your serverless functions are accessible
 [[redirects]]
