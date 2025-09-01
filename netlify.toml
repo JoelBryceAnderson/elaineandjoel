@@ -1,30 +1,30 @@
 # This is the build command for your site
 [build]
-  command = "npm run build"  # Or "yarn build"
-  publish = "build"          # Or "dist", check your project's build output folder
+  command = "npm run build"
+  publish = "build"
   functions = "netlify/functions"
 
-# This rule ensures that your serverless functions are accessible
-
 # Proxy to seating chart app
+# This rule handles requests for specific files like CSS, JS, etc.
 [[redirects]]
   from = "/seating/*"
   to = "https://seatingchartsimulator.netlify.app/:splat"
+  status = 200
 
+# This rule handles the initial visit to the /seating path.
 [[redirects]]
   from = "/seating"
-  to = "https://seatingchartsimulator.netlify.app"
+  to = "https://seatingchartsimulator.netlify.app/index.html"
   status = 200
 
-  status = 200
-
+# This rule ensures that your serverless functions are accessible
 [[redirects]]
   from = "/.netlify/functions/*"
   to = "/.netlify/functions/:splat"
   status = 200
 
 # This is the "catch-all" rule for your Single-Page App.
-# It MUST come AFTER the functions redirect rule.
+# It MUST come AFTER the other redirect rules.
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -2,6 +2,7 @@
   "name": "elaineandjoel",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://seatingchartsimulator.netlify.app",
   "dependencies": {
     "@googlemaps/js-api-loader": "github:googlemaps/js-api-loader",
     "dotenv": "^16.4.7",
