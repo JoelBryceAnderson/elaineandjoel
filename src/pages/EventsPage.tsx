@@ -24,13 +24,13 @@ const EVENTS = [
     day: "Friday",
     startTime: "7:00 PM",
     endTime: "10:00 PM",
-    location: "TBD",
-    description: "Join us for a welcome drink! Location TBD.",
-    address: "TBD",
-    mapUrl: "https://maps.app.goo.gl/2GzsbGdgK33k5eee7",
+    location: "The Cactus Shop",
+    description: "Join us for a relaxed welcome party at one of our favorite local Mexican cantinas. It's a casual, drop-in style event, so please come and go as you please. While there's no open bar, food and drinks will be available for you to order.",
+    address: "231 Kent Ave, Brooklyn, NY 11249",
+    mapUrl: "https://maps.app.goo.gl/qGD9SV3JD72ZuCBN6",
     coordinates: {
-      lat: 40.7160,
-      lng: -73.9669
+      lat: 40.7168,
+      lng: -73.9653
     }
   },
   {
