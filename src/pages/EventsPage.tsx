@@ -136,7 +136,7 @@ const EventsPage: React.FC = () => {
   return (
     <PageTemplate
       title="Schedule of Events"
-      subtitle="Currently subject to change."
+      subtitle=""
     >
     <div>
       <div className="text-center">
