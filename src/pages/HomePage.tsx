@@ -23,10 +23,13 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-50 bg-[#ccac6c] text-white p-4 text-center" style={{fontFamily: 'Radley'}}>
-        <h2 className="text-2xl font-bold">Travel trouble? Let us know!</h2>
-        <a href="mailto:elaineandjoelanderson@gmail.com" className="underline hover:text-gray-200">
-          Click here to email us if your flight was delayed or canceled.
+      <div className="sticky top-0 z-50 bg-[#ccac6c] text-white p-4 flex justify-between items-center" style={{fontFamily: 'Radley'}}>
+        <div>
+          <h2 className="text-2xl font-bold">Travel trouble? Let us know!</h2>
+          <p>Click the button to email us if your flight was delayed or canceled.</p>
+        </div>
+        <a href="mailto:elaineandjoelanderson@gmail.com" className="bg-white text-[#ccac6c] font-bold py-2 px-4 rounded hover:bg-gray-200">
+          Email Us
         </a>
       </div>
       <div className="min-h-screen bg-[#082e5d] p-8" style={{fontFamily: 'Radley'}}>
