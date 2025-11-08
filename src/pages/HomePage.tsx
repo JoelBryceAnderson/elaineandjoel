@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-50 bg-[#ccac6c] text-white p-4 text-center">
+      <div className="sticky top-0 z-50 bg-[#ccac6c] text-white p-4 text-center" style={{fontFamily: 'Radley'}}>
         <h2 className="text-2xl font-bold">Travel trouble? Let us know!</h2>
         <a href="mailto:elaineandjoelanderson@gmail.com" className="underline hover:text-gray-200">
           Click here to email us if your flight was delayed or canceled.
