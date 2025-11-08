@@ -53,6 +53,12 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12 mt-12 relative z-10 pt-40">
             <p className="text-[#1B365D] font-light text-3xl">YOU ARE INVITED TO</p>
             <p className="text-[#1B365D] text-xl">the wedding of</p>
+            <div className="bg-[#ccac6c] text-white p-4 rounded-lg text-center mb-8">
+              <h2 className="text-2xl font-bold">Travel trouble? Let us know!</h2>
+              <a href="mailto:elaineandjoelanderson@gmail.com" className="underline hover:text-gray-200">
+                Click here to email us if your flight was delayed or canceled.
+              </a>
+            </div>
             
             <h1 className="text-6xl tracking-wide text-[#1B365D] my-12" style={{fontFamily: 'Italianno, cursive'}}>
               Elaine Haas &<br /> Joel Anderson
