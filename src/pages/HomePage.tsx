@@ -1,5 +1,6 @@
 import React from 'react';
 import Polaroid from '../components/Polaroid';
+import PolaroidStack from '../components/PolaroidStack';
 
 const polaroids = [
   // Left side
@@ -67,6 +68,11 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Polaroid stack for small screens */}
+        <div className="lg:hidden mt-12" style={{ height: '70vh' }}>
+          <PolaroidStack />
         </div>
       </div>
     </>
