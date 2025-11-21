@@ -10,8 +10,8 @@ const polaroids = [
 
   // Right side
   { imageSrc: 'https://lh3.googleusercontent.com/d/1FoEniZs14U8p9Phof6HiJaAs4_9hxVGh', top: '15%', right: '5%', rotation: 10 },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1m9iZkX2YJ8PIKriTGXi-ELRsXJcDFJsn', top: '45%', right: '10%', rotation: -5 },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/13KQRH2bEsC518nXMyrNjv6wWjhHPP8Vn', top: '75%', right: '5%', rotation: 15 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1K0uZrCgJxUa529YuUfOOirZPTIAPyIGP', top: '45%', right: '10%', rotation: -5 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1Zs7G1ceoY1bCY9mOHIjiQOUXKdQHFanr', top: '75%', right: '5%', rotation: 15 },
 ];
 
 const HomePage: React.FC = () => {
