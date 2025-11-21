@@ -1,9 +1,29 @@
 import React from 'react';
+import Polaroid from '../components/Polaroid';
+
+const polaroids = [
+  // Left side
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1y29gPpmTXQEBz6ocDLVTOff2bOxO8xpV', top: '10%', left: '5%', rotation: -15 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1DSg9nxw6O8TW1LZdystYvX6OHwIhBOeI', top: '40%', left: '10%', rotation: 5 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1eMZrfqwpB3cU0lRnmcsSt-TAv071r76A', top: '70%', left: '5%', rotation: -10 },
+
+  // Right side
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1q-pnLsbY1fNgNZPo-ccnXXCBShVJkZL3', top: '15%', right: '5%', rotation: 10 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1m9iZkX2YJ8PIKriTGXi-ELRsXJcDFJsn', top: '45%', right: '10%', rotation: -5 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/13KQRH2bEsC518nXMyrNjv6wWjhHPP8Vn', top: '75%', right: '5%', rotation: 15 },
+];
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <div className="min-h-screen bg-[#082e5d] p-8" style={{fontFamily: 'Radley'}}>
+      <div className="relative min-h-screen bg-[#082e5d] p-8" style={{ fontFamily: 'Radley' }}>
+        {/* Polaroid border for large screens */}
+        <div className="hidden lg:block">
+          {polaroids.map((p, index) => (
+            <Polaroid key={index} {...p} />
+          ))}
+        </div>
+
         <div className="max-w-2xl mx-auto px-8 py-24 relative">
           {/* Background for the entire card */}
           <div
@@ -34,7 +54,7 @@ const HomePage: React.FC = () => {
             <div className="text-center mb-12 mt-12 relative z-10 pt-40 pb-12">
               <p className="text-[#1B365D] font-light text-3xl">WE'RE MARRIED!</p>
 
-              <h1 className="text-6xl tracking-wide text-[#1B365D] my-12" style={{fontFamily: 'Italianno, cursive'}}>
+              <h1 className="text-6xl tracking-wide text-[#1B365D] my-12" style={{ fontFamily: 'Italianno, cursive' }}>
                 Elaine & Joel
               </h1>
 
