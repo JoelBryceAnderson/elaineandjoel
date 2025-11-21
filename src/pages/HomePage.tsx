@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
         <div className="max-w-2xl mx-auto px-8 py-24 relative">
           {/* Background for the entire card */}
           <div
-            className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-white/95"
+            className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-white"
           >
             {/* Brick background image */}
             <img
