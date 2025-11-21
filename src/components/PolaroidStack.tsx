@@ -26,6 +26,7 @@ const trans = (r: number, s: number) => `perspective(1500px) rotateZ(${r}deg) sc
 
 const PolaroidStack: React.FC = () => {
   const [gone] = useState(() => new Set());
+  const [isResetting, setIsResetting] = useState(false);
   
   // Store initial props to reset cards to their original state
   const [initialProps] = useState(() => polaroids.map((_, i) => to(i)));
@@ -35,6 +36,8 @@ const PolaroidStack: React.FC = () => {
   }));
 
   const bind = useDrag(({ args: [index], active, movement: [mx], direction: [xDir], velocity }) => {
+    if (isResetting) return;
+
     const trigger = velocity[0] > 0.2;
     const dir = xDir < 0 ? -1 : 1;
 
@@ -68,9 +71,17 @@ const PolaroidStack: React.FC = () => {
     });
 
     if (!active && gone.size === polaroids.length) {
+      setIsResetting(true);
       setTimeout(() => {
         gone.clear();
-        api.start(i => initialProps[i]);
+        api.start(i => {
+          // Check if it's the last animation
+          if (i === polaroids.length - 1) {
+            // Re-enable dragging after the last card has reset
+            return { ...initialProps[i], onRest: () => setIsResetting(false) };
+          }
+          return initialProps[i];
+        });
       }, 600);
     }
   });

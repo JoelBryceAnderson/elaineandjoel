@@ -17,7 +17,7 @@ const polaroids = [
 const HomePage: React.FC = () => {
   return (
     <>
-      <div className="relative min-h-screen bg-[#082e5d] py-8 lg:p-8" style={{ fontFamily: 'Radley' }}>
+      <div className="relative min-h-screen bg-[#082e5d] py-8 lg:p-8 overflow-x-hidden" style={{ fontFamily: 'Radley' }}>
         {/* Polaroid border for large screens */}
         <div className="hidden lg:block">
           {polaroids.map((p, index) => (
@@ -71,7 +71,7 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Polaroid stack for small screens */}
-        <div className="lg:hidden mt-12" style={{ height: '70vh' }}>
+        <div className="lg:hidden mt-12 overflow-hidden" style={{ height: '70vh' }}>
           <PolaroidStack />
         </div>
       </div>
