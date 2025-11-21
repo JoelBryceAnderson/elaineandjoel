@@ -55,8 +55,11 @@ const HomePage: React.FC = () => {
             <div className="text-center mb-12 mt-12 relative z-10 pt-40 pb-12">
               <p className="text-[#1B365D] font-light text-3xl">WE'RE MARRIED!</p>
 
-              <h1 className="text-6xl tracking-wide text-[#1B365D] my-12" style={{ fontFamily: 'Italianno, cursive' }}>
+              <h1 className="text-6xl tracking-wide text-[#1B365D] mt-12" style={{ fontFamily: 'Italianno, cursive' }}>
                 Elaine & Joel
+              </h1>
+              <h1 className="text-6xl tracking-wide text-[#1B365D] mb-12" style={{ fontFamily: 'Italianno, cursive' }}>
+                Anderson
               </h1>
 
               <div className="mt-12 text-[#1B365D] text-xl px-4">
