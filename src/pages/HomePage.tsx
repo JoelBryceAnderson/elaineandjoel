@@ -17,7 +17,7 @@ const polaroids = [
 const HomePage: React.FC = () => {
   return (
     <>
-      <div className="relative min-h-screen bg-[#082e5d] p-8" style={{ fontFamily: 'Radley' }}>
+      <div className="relative min-h-screen bg-[#082e5d] py-8 lg:p-8" style={{ fontFamily: 'Radley' }}>
         {/* Polaroid border for large screens */}
         <div className="hidden lg:block">
           {polaroids.map((p, index) => (
@@ -25,10 +25,10 @@ const HomePage: React.FC = () => {
           ))}
         </div>
 
-        <div className="max-w-2xl mx-auto px-8 py-24 relative">
+        <div className="max-w-2xl mx-auto lg:px-8 py-24 relative">
           {/* Background for the entire card */}
           <div
-            className="absolute inset-0 rounded-xl shadow-lg overflow-hidden bg-white"
+            className="absolute inset-0 lg:rounded-xl shadow-lg overflow-hidden bg-white"
           >
             {/* Brick background image */}
             <img
