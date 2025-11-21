@@ -3,12 +3,12 @@ import Polaroid from '../components/Polaroid';
 
 const polaroids = [
   // Left side
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1y29gPpmTXQEBz6ocDLVTOff2bOxO8xpV', top: '10%', left: '5%', rotation: -15 },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1DSg9nxw6O8TW1LZdystYvX6OHwIhBOeI', top: '40%', left: '10%', rotation: 5 },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1eMZrfqwpB3cU0lRnmcsSt-TAv071r76A', top: '70%', left: '5%', rotation: -10 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1c8giD21EjYyTDlPH-qeYUFRPmCVXPxj6', top: '10%', left: '5%', rotation: -15 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1I9-tQqHxnoHP8R8lmw8xQEKf4E5df7Xr', top: '40%', left: '10%', rotation: 5 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1_3F666LB7Ic0LXmlVa5ocqKKupsiP3Jo', top: '70%', left: '5%', rotation: -10 },
 
   // Right side
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1q-pnLsbY1fNgNZPo-ccnXXCBShVJkZL3', top: '15%', right: '5%', rotation: 10 },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1FoEniZs14U8p9Phof6HiJaAs4_9hxVGh', top: '15%', right: '5%', rotation: 10 },
   { imageSrc: 'https://lh3.googleusercontent.com/d/1m9iZkX2YJ8PIKriTGXi-ELRsXJcDFJsn', top: '45%', right: '10%', rotation: -5 },
   { imageSrc: 'https://lh3.googleusercontent.com/d/13KQRH2bEsC518nXMyrNjv6wWjhHPP8Vn', top: '75%', right: '5%', rotation: 15 },
 ];
