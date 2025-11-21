@@ -4,7 +4,6 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import GiftsPage from './pages/GiftsPage';
 import HotelsPage from './pages/HotelsPage';
-import RSVPPage from './pages/RSVPPage';
 import NeighborhoodPage from './pages/NeighborhoodPage';
 import GalleryPage from './pages/GalleryPage';
 import FaqsPage from './pages/FaqsPage';
@@ -26,14 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/hotels",
         element: <HotelsPage />
-      },
-      {
-        path: "/rsvp",
-        element: <RSVPPage />
-      },
-      {
-        path: "/rsvp/:inviteCode",
-        element: <RSVPPage />
       },
       {
         path: "/events",
