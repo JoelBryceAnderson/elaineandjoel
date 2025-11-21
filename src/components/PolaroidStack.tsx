@@ -10,8 +10,8 @@ const polaroids = [
   { imageSrc: 'https://lh3.googleusercontent.com/d/1_3F666LB7Ic0LXmlVa5ocqKKupsiP3Jo' },
   // Right side
   { imageSrc: 'https://lh3.googleusercontent.com/d/1FoEniZs14U8p9Phof6HiJaAs4_9hxVGh' },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/1m9iZkX2YJ8PIKriTGXi-ELRsXJcDFJsn' },
-  { imageSrc: 'https://lh3.googleusercontent.com/d/13KQRH2bEsC518nXMyrNjv6wWjhHPP8Vn' },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1K0uZrCgJxUa529YuUfOOirZPTIAPyIGP' },
+  { imageSrc: 'https://lh3.googleusercontent.com/d/1Zs7G1ceoY1bCY9mOHIjiQOUXKdQHFanr' },
 ].map((p, i) => ({ ...p, id: i }));
 
 const to = (i: number) => ({
